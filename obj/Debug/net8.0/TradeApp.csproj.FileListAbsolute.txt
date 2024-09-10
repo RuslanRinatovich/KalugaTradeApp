@@ -149,3 +149,4 @@ C:\KALUGA\Home\TradeApp\obj\Debug\net8.0\ref\TradeApp.dll
 c:\KALUGA\Home\TradeApp\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 c:\KALUGA\Home\TradeApp\bin\Debug\net8.0\System.Drawing.Common.dll
 c:\KALUGA\Home\TradeApp\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
+c:\KALUGA\Home\TradeApp\obj\Debug\net8.0\TradeApp.sourcelink.json

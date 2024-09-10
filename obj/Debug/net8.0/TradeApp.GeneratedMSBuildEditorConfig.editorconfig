@@ -25,5 +25,11 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [c:/KALUGA/Home/TradeApp/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[c:/KALUGA/Home/TradeApp/Views/ProductsDataGridView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[c:/KALUGA/Home/TradeApp/Views/ProductsEditView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [c:/KALUGA/Home/TradeApp/Views/ProductsView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
