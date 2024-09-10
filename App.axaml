@@ -1,0 +1,17 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="TradeApp.App"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+    <Application.Resources>
+        <!--цвета приложения для соответсвия стилю-->
+        <SolidColorBrush x:Key="main" Color="#FFF"/>
+        <SolidColorBrush x:Key="additional" Color="#FF76E383"/>
+        <SolidColorBrush x:Key="akcent" Color="#FF498C51"/>
+
+</Application.Resources>
+</Application>

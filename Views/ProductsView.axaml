@@ -1,0 +1,76 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:Views;assembly=TradeApp"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Views.ProductsView"
+              x:DataType="pages:ProductsView">
+ <Grid>
+<Grid.RowDefinitions>
+<RowDefinition Height="auto"/>
+  <RowDefinition Height="*"/>
+  <RowDefinition Height="40"/>
+</Grid.RowDefinitions>
+<WrapPanel Grid.Row="0" HorizontalAlignment="Stretch">
+<StackPanel Orientation="Horizontal">
+<TextBlock Text="Введите наименование товара для поиска:"
+/>
+<TextBox Width="275" x:Name="TBoxSearch" TextChanged="TBoxSearchTextChanged"/>
+</StackPanel>
+<StackPanel Orientation="Horizontal">
+<TextBlock Text="Выберите скидку"
+ />
+<ComboBox Width="275" x:Name="ComboDiscont" SelectionChanged="ComboBoxSelectionChanged"
+ >
+<ComboBoxItem Content="Все диапазоны"/>
+<ComboBoxItem Content="0 - 9.99%"/>
+<ComboBoxItem Content="10 - 14.99 %"/>
+<ComboBoxItem Content="15% и более"/>
+</ComboBox>
+</StackPanel>
+<StackPanel Orientation="Horizontal">
+<TextBlock Text="Сортировать по"
+/>
+<ComboBox Width="275" SelectionChanged="ComboBoxSelectionChanged"
+x:Name="ComboSort"
+>
+<ComboBoxItem Content="По возрастанию"/>
+<ComboBoxItem Content="По убыванию"/>
+    </ComboBox>
+  </StackPanel>
+  </WrapPanel>
+<ListBox Grid.Row="1"
+				  x:Name="ProductsListBox"
+          ItemsSource="{Binding Products}"    
+          > 
+        <ListBox.ItemTemplate>
+    <DataTemplate>
+      <Grid HorizontalAlignment="Stretch" UseLayoutRounding="True" Background="{Binding GetColor}" >
+<Grid.ColumnDefinitions>
+<ColumnDefinition Width="60"/>
+<ColumnDefinition Width="*"/>
+<ColumnDefinition Width="80"/>
+</Grid.ColumnDefinitions>
+<Image Grid.Column="0" Width="60" Height="40"
+
+Stretch="Uniform"  Source="{Binding GetImage}" />
+      <StackPanel Grid.Column="1" >
+        <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="Bold" />
+        <TextBlock Text="{Binding Description}"/>
+        <TextBlock Text="{Binding Manufacturer.Title, StringFormat={}Производитель: {0}}"/>
+        <TextBlock Text="{Binding Cost, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding GetCostWithDiscontVisibility}" TextDecorations="Strikethrough" Foreground="Red"/>
+        <TextBlock Text="{Binding Cost, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding GetCostWithoutDiscontVisibility}" />
+        <TextBlock Text="{Binding GetPriceWithDiscount, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding GetVisibility}" Foreground="Green"/>
+        
+        </StackPanel>
+        <TextBlock Width="80" VerticalAlignment="Center" Grid.Column="2" Margin="5" FontSize="26" 
+        Text="{Binding DiscountAmount, StringFormat=' {0} %'}" />
+        </Grid>
+        </DataTemplate>
+        </ListBox.ItemTemplate>
+		</ListBox>
+  <TextBlock Grid.Row="2" x:Name="TextBlockCount" Width="300" HorizontalAlignment="Left" />
+  </Grid>
+</UserControl>
+

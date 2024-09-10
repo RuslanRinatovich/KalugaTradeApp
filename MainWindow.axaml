@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        
+        x:Class="TradeApp.MainWindow" Background="{StaticResource additional}"
+        Title="TradeApp"
+        Icon="/Assets/icon.ico"
+        >
+        <Grid >
+            <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+          </Grid.RowDefinitions>
+              <Grid Background="{StaticResource additional}"/>
+              <Image Source="/Assets/logo.png" HorizontalAlignment="Left"/>
+          <TextBlock Grid.Row="0" Text="ООО РУЧКИ"           HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Background="{StaticResource additional}"
+          FontSize="20"
+          FontWeight="Bold"/>
+   
+    <ContentControl x:Name="MainContentControl"  Grid.Row ="1"/>
+    <Grid Grid.Row="2" Background="{StaticResource additional}"/>
+    </Grid>
+</Window>
