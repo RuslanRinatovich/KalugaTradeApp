@@ -114,12 +114,10 @@ public partial class TradeContext : DbContext
 
             entity.HasOne(d => d.Order).WithMany()
                 .HasForeignKey(d => d.OrderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("order_product_order_fk");
 
             entity.HasOne(d => d.Product).WithMany()
                 .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("order_product_product_fk");
         });
 

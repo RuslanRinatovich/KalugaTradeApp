@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="using:Views"
+             xmlns:vm="using:ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Views.ProductsDataGridView"
              x:DataType="vm:ProductsGridViewModel">
@@ -16,12 +16,45 @@
 </Grid.RowDefinitions>
 
     <DataGrid Grid.Row="0"
-				  x:Name="ProductsDataGrid"  AutoGenerateColumns="False"
+				  x:Name="ProductsDataGrid" 
+                   AutoGenerateColumns="False"
+                   IsReadOnly="true" 
+                   GridLinesVisibility="All"
+          BorderThickness="1" 
+          BorderBrush="Gray" RowHeight="40"
+          Background="{StaticResource main}"
           ItemsSource="{Binding Products}">
           <DataGrid.Columns>
-     <DataGridTextColumn Header="Id"  Binding="{Binding Id}"/>
-     <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
+            <DataGridTemplateColumn Width="100" Header="Главное изображение">
+    <DataGridTemplateColumn.CellTemplate>
+      <DataTemplate>
+        <Image Source="{Binding Path=GetImage}" />
+      </DataTemplate>
+    </DataGridTemplateColumn.CellTemplate>
+</DataGridTemplateColumn>
+    <DataGridTextColumn Binding="{Binding Id}" Header="Артикул" />
+    <DataGridTextColumn Binding="{Binding Title}" Header="Наименование товара" Width="2*"/>
+    <DataGridTextColumn Binding="{Binding Cost, StringFormat='C'}" Header="Стоимость" Width="*"/>
+    <DataGridTextColumn Binding="{Binding Unittype.Title}" Header="Единицы измерения" Width="*"/>
+    <DataGridTextColumn Binding="{Binding DiscountAmount}" Header="Действующая скидка" Width="*"/>
+    <DataGridTextColumn Binding="{Binding QuantityInStock}" Header="Количество на складе" Width="*"/>
+    <DataGridTemplateColumn Width="auto" Header="Редактировать">
+        <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+                <Button Click="EditButton_Click"  Content="..."  Margin="0"/>
+        </DataTemplate>
+        </DataGridTemplateColumn.CellTemplate>
+</DataGridTemplateColumn>
+<DataGridTemplateColumn Width="auto" Header="Удалить">
+        <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+                <Button Click="RemoveButton_Click"  Content="X"  Margin="0"/>
+        </DataTemplate>
+        </DataGridTemplateColumn.CellTemplate>
+</DataGridTemplateColumn>
   </DataGrid.Columns>
       </DataGrid>
+
+      <TextBlock x:Name="TextBlockResult" Text="HelloWordlsd" Grid.Row="1"/>
 </Grid>
 </UserControl>

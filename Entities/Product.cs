@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using Avalonia.Controls;
-using Avalonia.Media.Imaging;
-
 
 namespace TradeApp.Entities;
 
@@ -32,8 +28,6 @@ public partial class Product
     public int CategoryId { get; set; }
 
     public byte[]? Photo { get; set; }
-
-   
 
     public virtual Category Category { get; set; } = null!;
 
