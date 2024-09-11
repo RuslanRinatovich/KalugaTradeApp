@@ -85,4 +85,25 @@ private void UpdateData()
     ProductsListBox.ItemsSource = Products;
 
     }
+
+    private void MenuItem_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        // контекстное меню по нажатию правой кнопки мыши
+        // если товар не выбран, завершаем работу
+        var ProductsListBox = this.FindControl<ListBox>("ProductsListBox");
+        if(ProductsListBox.SelectedItem is Product product)
+        {
+            
+        // добавляем товар в корзину
+            Basket.AddProductInBasket(product);
+            // отображаем кнопку и текстовое поле
+            if (Basket.GetCount > 0)
+            {
+                var BtnBasket = this.FindControl<Button>("BtnBasket");
+                BtnBasket.IsVisible = true;
+               // TextBlockBasketInfo.Visibility = Visibility.Visible;
+                TextBlockBasketInfo.Text = $"В корзине {Basket.GetCount} товаров";
+            }
+        }
+}
 }
