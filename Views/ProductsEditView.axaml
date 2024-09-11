@@ -2,7 +2,98 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:Views;assembly=TradeApp"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Views.ProductsEditView">
-  Welcome to Avalonia!
+             x:Class="Views.ProductsEditView"
+             x:DataType="pages:ProductsEditView">
+<Grid>
+  <Grid.RowDefinitions>
+    <RowDefinition Height="60"/>
+    <RowDefinition Height="auto"/>
+    <RowDefinition Height="auto"/>
+    <RowDefinition Height="auto"/>
+    <RowDefinition Height="auto"/>
+    <RowDefinition Height="auto"/>
+    <RowDefinition Height="auto"/>
+    <RowDefinition Height="auto"/>
+    <RowDefinition Height="auto"/>
+    <RowDefinition Height="auto"/>
+    <RowDefinition Height="Auto"/>
+    <RowDefinition Height="*"/>
+    <RowDefinition Height="40"/>
+  </Grid.RowDefinitions>
+  <Grid.ColumnDefinitions>
+    <ColumnDefinition Width="245"/>
+    <ColumnDefinition/>
+  </Grid.ColumnDefinitions>
+
+  <Button x:Name="BtnLoad" Grid.Row="0" Grid.Column="0" Margin="120,5,0,0"
+HorizontalAlignment="Left" VerticalAlignment="Top"
+Click="BtnLoadClick" Content="Загрузить" Width="79"/>
+<TextBlock Grid.Row="0" Grid.Column="0" Text="Логотип" Margin="20 0"/>
+<TextBlock Grid.Row="1" Grid.Column="0" Text="Артикул товара" Margin="20 0"/>
+<TextBlock Grid.Row="2" Grid.Column="0" Text="Категория товара" Margin="20 0"/>
+<TextBlock Grid.Row="3" Grid.Column="0" Text="Наименование товара" Margin="20 0"/>
+<TextBlock Grid.Row="4" Grid.Column="0" Text="Количество на складе" Margin="20 0"/>
+<TextBlock Grid.Row="5" Grid.Column="0" Text="Единица измерения" Margin="20 0"/>
+<TextBlock Grid.Row="6" Grid.Column="0" Text="Производитель" Margin="20 0"/>
+<TextBlock Grid.Row="7" Grid.Column="0" Text="Поставщик" Margin="20 0"/>
+<TextBlock Grid.Row="8" Grid.Column="0" Text="Размер максимальной скидки" Margin="20 0" />
+<TextBlock Grid.Row="9" Grid.Column="0" Text="Размер действующей скидки" Margin="20 0" />
+<TextBlock Grid.Row="10" Grid.Column="0" Text="Стоимость за единицу" Margin="20 0" />
+<TextBlock Grid.Row="11" Grid.Column="0" Text="Описание" Margin="20 0"/>
+<TextBlock x:Name="TextBlockFileName" Grid.Row="12" Grid.Column="0" Text="Описание" Margin="20 0"/>
+<Image x:Name="ImagePhoto" Source="{Binding Product.GetImage}"
+Grid.Row="0" Grid.Column="1" Margin="10 0 0 0"
+VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="100"/>
+<TextBox x:Name="TextBoxArtikul" Text="{Binding Product.Id}"  Grid.Row="1" Grid.Column="1"/>
+<ComboBox x:Name="ComboCategory" SelectedItem="{Binding Product.Category}" PlaceholderText="{Binding Product.Category.Title}" ItemsSource="{Binding Categories}" Grid.Row="2" Grid.Column="1">
+  <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Title}"/>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+  </ComboBox>
+
+
+<TextBox x:Name="TextBoxTitle" Text="{Binding Product.Title}" Grid.Row="3" Grid.Column="1" Padding="0,2" />
+<TextBox x:Name="TextBoxQuantityInStock" Text="{Binding Product.QuantityInStock}" Grid.Row="4" Grid.Column="1" Padding="0,2" />
+<ComboBox x:Name="ComboUnitType" ItemsSource="{Binding Unittypes}"  PlaceholderText="{Binding Product.Unittype.Title}"  SelectedItem="{Binding Product.Unittype}"  Grid.Row="5" Grid.Column="1">
+  <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Title}"/>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+  </ComboBox>
+
+<ComboBox x:Name="ComboManufacturer" SelectedItem="{Binding Product.Manufacturer}"  PlaceholderText="{Binding Product.Manufacturer.Title}" ItemsSource="{Binding Manufacturers}" Grid.Row="6" Grid.Column="1" >
+   <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Title}"/>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+  </ComboBox>
+<ComboBox x:Name="ComboSupplier" SelectedItem="{Binding Product.Supplier}" PlaceholderText="{Binding Product.Supplier.Title}"  ItemsSource="{Binding Suppliers}" Grid.Row="7" Grid.Column="1">
+   <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Title}"/>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+  </ComboBox>
+
+<TextBox x:Name="TextBoxDiscountAmountMax" Text="{Binding Product.MaxDiscountAmount}"
+Grid.Row="8" Grid.Column="1" Padding="0,2" />
+<TextBox x:Name="TextBoxDiscountAmount" Text="{Binding Product.DiscountAmount}"
+Grid.Row="9" Grid.Column="1" Padding="0,2" />
+<TextBox x:Name="TextBoxCost" Text="{Binding Product.Cost}"
+Grid.Row="10" Grid.Column="1" Padding="0,2" />
+<TextBox x:Name="TextBoxDescription" Text="{Binding Product.Description}"
+TextWrapping="Wrap" Grid.Row="11" Grid.Column="1" Padding="0,2" />
+
+
+    <Button x:Name="BtnSave" Grid.Row="12" Content="Сохранить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Click="SaveButton_Click" 
+    Grid.Column="1"/>
+    <Button x:Name="BtnCancel" Grid.Row="12" Content="Отмена" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Click="CancelButton_Click" 
+    Grid.Column="1" Margin="150 0 0 0"/>
+  </Grid>
 </UserControl>

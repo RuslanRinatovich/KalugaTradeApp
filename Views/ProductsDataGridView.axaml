@@ -34,6 +34,7 @@
 </DataGridTemplateColumn>
     <DataGridTextColumn Binding="{Binding Id}" Header="Артикул" />
     <DataGridTextColumn Binding="{Binding Title}" Header="Наименование товара" Width="2*"/>
+    <DataGridTextColumn Binding="{Binding Category.Title}" Header="Категория" Width="*"/>
     <DataGridTextColumn Binding="{Binding Cost, StringFormat='C'}" Header="Стоимость" Width="*"/>
     <DataGridTextColumn Binding="{Binding Unittype.Title}" Header="Единицы измерения" Width="*"/>
     <DataGridTextColumn Binding="{Binding DiscountAmount}" Header="Действующая скидка" Width="*"/>
@@ -54,7 +55,8 @@
 </DataGridTemplateColumn>
   </DataGrid.Columns>
       </DataGrid>
-
+<Button x:Name="BtnAdd" Grid.Row="1" Width="100" HorizontalAlignment="Left" Margin="3"
+Content="Добавить" Click="AddButton_Click"/>
       <TextBlock x:Name="TextBlockResult" Text="HelloWordlsd" Grid.Row="1"/>
 </Grid>
 </UserControl>

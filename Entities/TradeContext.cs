@@ -86,17 +86,15 @@ public partial class TradeContext : DbContext
 
             entity.HasOne(d => d.Pickuppoint).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.PickuppointId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("order_pickup_point_fk");
 
             entity.HasOne(d => d.Status).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.StatusId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("order_status_fk");
 
             entity.HasOne(d => d.UsernameNavigation).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.Username)
-                .OnDelete(DeleteBehavior.SetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("order_user_fk");
         });
 

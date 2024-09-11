@@ -20,6 +20,16 @@ public partial class Product
                     return new Bitmap(ms);;
                 }
         }
+        // set
+        // {
+        //     using (var stream = new MemoryStream())
+        //     {
+        //         value.Save(stream);
+        //         Photo = stream.ToArray();
+        //     }
+        // }
+
+        
     }
 
     /// <summary>

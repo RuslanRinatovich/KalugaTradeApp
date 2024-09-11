@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "c:\\KALUGA\\Home\\TradeApp\\TradeApp.csproj": {}
+    "d:\\KalugaTradeApp\\TradeApp.csproj": {}
   },
   "projects": {
-    "c:\\KALUGA\\Home\\TradeApp\\TradeApp.csproj": {
+    "d:\\KalugaTradeApp\\TradeApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\KALUGA\\Home\\TradeApp\\TradeApp.csproj",
+        "projectUniqueName": "d:\\KalugaTradeApp\\TradeApp.csproj",
         "projectName": "TradeApp",
-        "projectPath": "c:\\KALUGA\\Home\\TradeApp\\TradeApp.csproj",
-        "packagesPath": "C:\\Users\\Main\\.nuget\\packages\\",
-        "outputPath": "c:\\KALUGA\\Home\\TradeApp\\obj\\",
+        "projectPath": "d:\\KalugaTradeApp\\TradeApp.csproj",
+        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
+        "outputPath": "d:\\KalugaTradeApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Main\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

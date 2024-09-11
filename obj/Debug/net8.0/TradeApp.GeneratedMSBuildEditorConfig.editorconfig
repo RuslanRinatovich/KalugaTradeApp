@@ -15,21 +15,21 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TradeApp
-build_property.ProjectDir = c:\KALUGA\Home\TradeApp\
+build_property.ProjectDir = d:\KalugaTradeApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[c:/KALUGA/Home/TradeApp/App.axaml]
+[d:/KalugaTradeApp/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/TradeApp/MainWindow.axaml]
+[d:/KalugaTradeApp/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/TradeApp/Views/ProductsDataGridView.axaml]
+[d:/KalugaTradeApp/Views/ProductsDataGridView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/TradeApp/Views/ProductsEditView.axaml]
+[d:/KalugaTradeApp/Views/ProductsEditView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/TradeApp/Views/ProductsView.axaml]
+[d:/KalugaTradeApp/Views/ProductsView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
