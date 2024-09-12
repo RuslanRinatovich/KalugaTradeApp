@@ -165,6 +165,7 @@ CREATE TABLE order_product (
 	product_id varchar(10) NOT NULL,
 	order_id int4 NOT NULL,
 	count int4 NULL,
+	CONSTRAINT order_product_pk PRIMARY KEY (product_id, order_id),
 	CONSTRAINT order_product_order_fk FOREIGN KEY (order_id) REFERENCES "order"(id),
 	CONSTRAINT order_product_product_fk FOREIGN KEY (product_id) REFERENCES product(id)
 );
