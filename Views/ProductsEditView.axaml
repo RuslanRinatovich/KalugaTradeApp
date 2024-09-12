@@ -2,10 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pages="clr-namespace:Views;assembly=TradeApp"
+             xmlns:vm="clr-namespace:Views;assembly=TradeApp"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Views.ProductsEditView" Background="{StaticResource main}"
-             x:DataType="pages:ProductsEditView"
+             x:DataType="vm:ProductsEditView"
              >
 <Grid>
   <Grid.RowDefinitions>
@@ -48,7 +48,7 @@ Click="BtnLoadClick" Content="Загрузить" Width="79"/>
 Grid.Row="0" Grid.Column="1" Margin="10 0 0 0"
 VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="100"/>
 <TextBox x:Name="TextBoxArtikul" Text="{Binding Product.Id}"  Grid.Row="1" Grid.Column="1"/>
-<ComboBox x:Name="ComboCategory" Width="300" SelectedItem="{Binding Product.Category}" PlaceholderText="{Binding Product.Category.Title}" ItemsSource="{Binding Categories}" Grid.Row="2" Grid.Column="1">
+<ComboBox x:Name="ComboCategory" Width="300" SelectedItem="{Binding Product.Category}"  ItemsSource="{Binding Categories}" Grid.Row="2" Grid.Column="1">
   <ComboBox.ItemTemplate>
             <DataTemplate>
               <TextBlock Text="{Binding Title}"/>
@@ -59,7 +59,8 @@ VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="100"/>
 
 <TextBox x:Name="TextBoxTitle" Text="{Binding Product.Title}" Grid.Row="3" Grid.Column="1" Padding="0,2" />
 <TextBox x:Name="TextBoxQuantityInStock" Text="{Binding Product.QuantityInStock}" Grid.Row="4" Grid.Column="1" Padding="0,2" />
-<ComboBox x:Name="ComboUnitType" Width="300" ItemsSource="{Binding Unittypes}"  PlaceholderText="{Binding Product.Unittype.Title}"  SelectedItem="{Binding Product.Unittype}"  Grid.Row="5" Grid.Column="1">
+<ComboBox x:Name="ComboUnitType" Width="300" ItemsSource="{Binding Unittypes}"  
+  SelectedItem="{Binding Product.Unittype}"  Grid.Row="5" Grid.Column="1">
   <ComboBox.ItemTemplate>
             <DataTemplate>
               <TextBlock Text="{Binding Title}"/>
@@ -67,14 +68,14 @@ VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="100"/>
           </ComboBox.ItemTemplate>
   </ComboBox>
 
-<ComboBox x:Name="ComboManufacturer" Width="300" SelectedItem="{Binding Product.Manufacturer}"  PlaceholderText="{Binding Product.Manufacturer.Title}" ItemsSource="{Binding Manufacturers}" Grid.Row="6" Grid.Column="1" >
+<ComboBox x:Name="ComboManufacturer" Width="300" SelectedItem="{Binding Product.Manufacturer}"  ItemsSource="{Binding Manufacturers}" Grid.Row="6" Grid.Column="1" >
    <ComboBox.ItemTemplate>
             <DataTemplate>
               <TextBlock Text="{Binding Title}"/>
             </DataTemplate>
           </ComboBox.ItemTemplate>
   </ComboBox>
-<ComboBox x:Name="ComboSupplier" Width="300" SelectedItem="{Binding Product.Supplier}" PlaceholderText="{Binding Product.Supplier.Title}"  ItemsSource="{Binding Suppliers}" Grid.Row="7" Grid.Column="1">
+<ComboBox x:Name="ComboSupplier" Width="300" SelectedItem="{Binding Product.Supplier}" ItemsSource="{Binding Suppliers}" Grid.Row="7" Grid.Column="1">
    <ComboBox.ItemTemplate>
             <DataTemplate>
               <TextBlock Text="{Binding Title}"/>

@@ -4,7 +4,9 @@ using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using KalugaTradeApp;
 using Microsoft.EntityFrameworkCore;
+using TradeApp;
 using TradeApp.Entities;
 
 namespace Views;
@@ -12,11 +14,14 @@ namespace Views;
 public partial class ProductsView : UserControl
 {
        public List<Product> Products {get; set;}
+       public String PageTitle = "ProductsView";
     int _itemcount = 0;
      TradeContext context;
          public ProductsView()
     {
         this.InitializeComponent();
+        App.PagesStack.Add(PageTitle);
+        
         context = new TradeContext();
         Products = context.Products.Include(x => x.Manufacturer).
         Include(x => x.Category).
@@ -102,8 +107,16 @@ private void UpdateData()
                 var BtnBasket = this.FindControl<Button>("BtnBasket");
                 BtnBasket.IsVisible = true;
                // TextBlockBasketInfo.Visibility = Visibility.Visible;
+               var TextBlockBasketInfo = this.FindControl<TextBlock>("TextBlockBasketInfo");
                 TextBlockBasketInfo.Text = $"В корзине {Basket.GetCount} товаров";
             }
         }
-}
+    }
+
+    private void BtnBasket_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var window = new OrderWindow();
+        window.ShowDialog(App.MainWindow);
+    }
+
 }

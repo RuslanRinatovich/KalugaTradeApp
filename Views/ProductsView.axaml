@@ -71,15 +71,14 @@ Stretch="Uniform"  Source="{Binding GetImage}" />
         </ListBox.ItemTemplate>
         <ListBox.ContextMenu>
 <ContextMenu>
-<MenuItem Header="Добавить в заказ"/>
+<MenuItem Header="Добавить в заказ" Click="MenuItem_Click" />
 </ContextMenu>
 </ListBox.ContextMenu>
 		</ListBox>
   <TextBlock Grid.Row="2" x:Name="TextBlockCount" Width="300" HorizontalAlignment="Left" />
   <TextBlock Grid.Row="2" x:Name="TextBlockBasketInfo" Width="200"
 HorizontalAlignment="Right" Margin="0 0 140 0" />
-<Button Grid.Row="2" Width="120" HorizontalAlignment="Right" Content="Корзина"
-x:Name="BtnBasket" />
+<Button Grid.Row="2" Width="120" HorizontalAlignment="Right" Content="Корзина" x:Name="BtnBasket" Click="BtnBasket_Click"/>
   </Grid>
 </UserControl>
 

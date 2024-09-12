@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:Views;assembly=TradeApp"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+              x:Class="Views.NewOrderView"
+             
+              x:DataType="pages:NewOrderView">
+  <Grid>
+  <Grid.ColumnDefinitions>
+<ColumnDefinition Width="200"/>
+<ColumnDefinition />
+</Grid.ColumnDefinitions>
+<Grid.RowDefinitions>
+  <RowDefinition Height="40"/>
+  <RowDefinition Height="34"/>
+  <RowDefinition Height="34"/>
+  <RowDefinition Height="34"/>
+  <RowDefinition Height="34"/>
+  <RowDefinition Height="34"/>
+  <RowDefinition/>
+  <RowDefinition Height="40"/>
+  <RowDefinition Height="40"/>
+</Grid.RowDefinitions>
+<Grid Background="{StaticResource additional}" Grid.ColumnSpan="2" />
+  <Image  Source="../Assets/logo.png" Margin="10" HorizontalAlignment="Left" />
+<TextBlock Grid.Row="0" Text="ООО РУЧКИ" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{StaticResource additional}" FontSize="20"
+FontWeight="Bold" />
+<TextBlock Text="Заказ No" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="TextBlockOrderNumber"
+ HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+<TextBlock Text="Дата заказа" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="60 0 0 0"
+VerticalAlignment="Center"  FontWeight="Bold" />
+<TextBlock x:Name="TextBlockOrderCreateDate" Grid.Row="2" Grid.Column="1"
+VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" />
+<TextBlock Text="Дата получения" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="60 0 0 0" VerticalAlignment="Center"
+FontWeight="Bold" />
+<TextBlock x:Name="TextBlockOrderDeliveryDate" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"
+HorizontalAlignment="Left" FontWeight="Bold" />
+<TextBlock Text="Пункт выдачи" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Margin="60 0 0 0" VerticalAlignment="Center" FontWeight="Bold" />
+<ComboBox x:Name="ComboPickupPoint" Width="300"  ItemsSource="{Binding PickupPoints}" Grid.Row="2" Grid.Column="1">
+  <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Address}"/>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+  </ComboBox>
+<TextBlock Text="Код получения" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Margin="60 0 0 0" VerticalAlignment="Center"
+FontWeight="Bold" />
+<TextBlock x:Name="TextBlockOrderGetCode" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"
+HorizontalAlignment="Left" FontWeight="Bold" />
+</Grid>
+</UserControl>

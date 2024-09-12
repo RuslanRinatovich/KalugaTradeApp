@@ -1,0 +1,37 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="200"
+        MinHeight="200" MaxHeight="200"
+        MinWidth="400" MaxWidth="400"
+        Icon="/Assets/icon.ico"
+        x:Class="KalugaTradeApp.LoginWindow"
+        Title="Вход" WindowStartupLocation="CenterOwner">
+<Grid>
+<Grid.ColumnDefinitions>
+    <ColumnDefinition />
+</Grid.ColumnDefinitions>
+  <Grid.RowDefinitions>
+    <RowDefinition Height="40"/>
+      <RowDefinition Height="34"/>
+      <RowDefinition Height="34"/>
+      <RowDefinition Height="40"/>
+</Grid.RowDefinitions>
+    <Grid Background="{StaticResource additional}" />
+<Image Source="Assets/logo.png" Margin="10" HorizontalAlignment="Left" />
+    <TextBlock Grid.Row="0" Text="ООО РУЧКИ" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{StaticResource additional}" FontSize="20" FontWeight="Bold" />
+<StackPanel Orientation="Horizontal" Grid.Row="1">
+    <TextBlock Grid.Row="1" Text="Логин" Margin="20 0" VerticalAlignment="Center" Width="120"/>
+    <TextBox x:Name="TbLogin" Grid.Column="1" Width="200"/>
+</StackPanel>
+<StackPanel Orientation="Horizontal" Grid.Row="2"> 
+  <TextBlock  Grid.Row="2" Grid.Column="0" Text="Пароль" Margin="20 0" VerticalAlignment="Center" Width="120"/>
+    <TextBox x:Name="TbPass" Height="30" Width="200" PasswordChar="*" />
+  </StackPanel >
+  <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center"> 
+    <Button Width="100" Height="30" Content="OK" x:Name="BtnOk" Click="BtnOkClick"/>
+    <Button Width="100" Height="30" Content="Cancel" x:Name="BtnCancel" Click="BtnCancelClick"/>
+</StackPanel>
+  </Grid>
+</Window>

@@ -14,22 +14,13 @@ public partial class Product
     {
         get{
             if (Photo is null)
-                return null;
+                return new Avalonia.Media.Imaging.Bitmap("Assets/picture.png");
             using (var ms = new MemoryStream(Photo))
                 {
                     return new Bitmap(ms);;
                 }
         }
-        // set
-        // {
-        //     using (var stream = new MemoryStream())
-        //     {
-        //         value.Save(stream);
-        //         Photo = stream.ToArray();
-        //     }
-        // }
-
-        
+               
     }
 
     /// <summary>

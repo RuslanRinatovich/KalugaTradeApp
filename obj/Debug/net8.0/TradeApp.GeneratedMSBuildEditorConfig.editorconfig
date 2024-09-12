@@ -22,7 +22,16 @@ build_property.EnableGeneratedComInterfaceComImportInterop =
 [d:/KalugaTradeApp/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[d:/KalugaTradeApp/LoginWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [d:/KalugaTradeApp/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[d:/KalugaTradeApp/OrderWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[d:/KalugaTradeApp/Views/NewOrderView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [d:/KalugaTradeApp/Views/ProductsDataGridView.axaml]
