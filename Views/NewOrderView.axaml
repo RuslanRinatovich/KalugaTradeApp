@@ -5,7 +5,6 @@
              xmlns:pages="clr-namespace:Views;assembly=TradeApp"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
               x:Class="Views.NewOrderView"
-             
               x:DataType="pages:NewOrderView">
   <Grid>
   <Grid.ColumnDefinitions>
@@ -27,18 +26,18 @@
   <Image  Source="../Assets/logo.png" Margin="10" HorizontalAlignment="Left" />
 <TextBlock Grid.Row="0" Text="ООО РУЧКИ" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{StaticResource additional}" FontSize="20"
 FontWeight="Bold" />
-<TextBlock Text="Заказ No" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="TextBlockOrderNumber"
+<TextBlock Text="Заказ N" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="TextBlockOrderNumber"
  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
 <TextBlock Text="Дата заказа" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="60 0 0 0"
 VerticalAlignment="Center"  FontWeight="Bold" />
-<TextBlock x:Name="TextBlockOrderCreateDate" Grid.Row="2" Grid.Column="1"
+<TextBlock x:Name="TextBlockOrderCreateDate"  Grid.Row="2" Grid.Column="1"
 VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" />
 <TextBlock Text="Дата получения" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="60 0 0 0" VerticalAlignment="Center"
 FontWeight="Bold" />
 <TextBlock x:Name="TextBlockOrderDeliveryDate" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"
 HorizontalAlignment="Left" FontWeight="Bold" />
 <TextBlock Text="Пункт выдачи" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Margin="60 0 0 0" VerticalAlignment="Center" FontWeight="Bold" />
-<ComboBox x:Name="ComboPickupPoint" Width="300"  ItemsSource="{Binding PickupPoints}" Grid.Row="2" Grid.Column="1">
+<ComboBox x:Name="ComboPickupPoint" Width="300"  ItemsSource="{Binding PickupPoints}" Grid.Row="4" Grid.Column="1">
   <ComboBox.ItemTemplate>
             <DataTemplate>
               <TextBlock Text="{Binding Address}"/>
@@ -49,5 +48,48 @@ HorizontalAlignment="Left" FontWeight="Bold" />
 FontWeight="Bold" />
 <TextBlock x:Name="TextBlockOrderGetCode" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"
 HorizontalAlignment="Left" FontWeight="Bold" />
+
+<ListBox Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+				  x:Name="ProductsListBox"
+          
+          ItemsSource="{Binding CurrentBasket}"    
+          > 
+        <ListBox.ItemTemplate>
+    <DataTemplate>
+      <Grid HorizontalAlignment="Stretch" UseLayoutRounding="True" Background="{Binding Key.GetColor}" >
+<Grid.ColumnDefinitions>
+<ColumnDefinition Width="60"/>
+<ColumnDefinition Width="*"/>
+<ColumnDefinition Width="80"/>
+</Grid.ColumnDefinitions>
+<Image Grid.Column="0" Width="60" Height="40" Stretch="Uniform"  Source="{Binding Key.GetImage}" />
+      <StackPanel Grid.Column="1" >
+        <TextBlock Text="{Binding Key.Title}" FontSize="20" FontWeight="Bold" />
+        <TextBlock Text="{Binding Key.Description}"/>
+        <TextBlock Text="{Binding Key.Manufacturer.Title, StringFormat={}Производитель: {0}}"/>
+        <TextBlock Text="{Binding Key.Cost, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding Key.GetCostWithDiscontVisibility}" TextDecorations="Strikethrough" Foreground="Red"/>
+        <TextBlock Text="{Binding Key.Cost, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding Key.GetCostWithoutDiscontVisibility}" />
+        <TextBlock Text="{Binding Key.GetPriceWithDiscount, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding Key.GetVisibility}" Foreground="Green"/>
+        <!-- <StackPanel Orientation="Horizontal">
+          <TextBlock FontSize="14" Text="количество:" HorizontalAlignment="Left" />
+            <TextBox FontSize="14" Text="{Binding Path=Value.Count}" Width="60" HorizontalAlignment="Left" Tag="{Binding Path=Key}" />
+          </StackPanel> -->
+             <TextBlock FontSize="14" Text="{Binding Path=Value.Count, StringFormat={} количество: {0}}" Width="300" HorizontalAlignment="Left" Tag="{Binding Path=Key}" />
+          <TextBlock FontSize="12" Text="{Binding Path=Key.GetCountInStock}" HorizontalAlignment="Left" />
+          <TextBlock FontSize="16" Text="{Binding Path=Value.Total, StringFormat={}итого: {0:F2} руб.}" Width="300" HorizontalAlignment="Left" />
+          
+        </StackPanel>
+        <TextBlock Width="80" VerticalAlignment="Center" Grid.Column="2" Margin="5" FontSize="26" Text="{Binding Key.DiscountAmount, StringFormat=' {0} %'}" />
+        </Grid>
+        </DataTemplate>
+        </ListBox.ItemTemplate>
+        
+		</ListBox>
+    <TextBlock x:Name="TextBlockTotalCost" Grid.Row="7" Grid.ColumnSpan="2"/>
+    <StackPanel Orientation="Horizontal" Grid.Row="8"  Grid.ColumnSpan="2" HorizontalAlignment="Center"> 
+      <Button Width="100" Height="30" Content="Закрыть" x:Name="BtnOk" Click="BtnOkClick"/>
+      <Button x:Name="BtnDelete" Content="Удалить" Click="BtnDeleteClick" Width="100" /> 
+      <Button x:Name="BtnBuyItem" Content="Оформить" Width="100" Click="BtnBuyItem_Click"/>
+</StackPanel>
 </Grid>
 </UserControl>

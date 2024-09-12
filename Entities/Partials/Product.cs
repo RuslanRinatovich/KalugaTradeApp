@@ -89,5 +89,10 @@ public partial class Product
         }
     }
 
+        public string GetCountInStock
+        {
+            get
+                    {           return $"в наличии на складе {QuantityInStock}  {Unittype.Title}";        }
+        }
     
 }
