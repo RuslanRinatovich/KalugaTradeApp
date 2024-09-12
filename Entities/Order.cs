@@ -19,6 +19,8 @@ public partial class Order
 
     public int GetCode { get; set; }
 
+    public virtual ICollection<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
+
     public virtual PickupPoint Pickuppoint { get; set; } = null!;
 
     public virtual Status Status { get; set; } = null!;

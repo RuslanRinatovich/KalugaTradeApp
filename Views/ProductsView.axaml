@@ -62,7 +62,7 @@ Stretch="Uniform"  Source="{Binding GetImage}" />
         <TextBlock Text="{Binding Cost, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding GetCostWithDiscontVisibility}" TextDecorations="Strikethrough" Foreground="Red"/>
         <TextBlock Text="{Binding Cost, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding GetCostWithoutDiscontVisibility}" />
         <TextBlock Text="{Binding GetPriceWithDiscount, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding GetVisibility}" Foreground="Green"/>
-        
+          <TextBlock FontSize="12" Text="{Binding Path=GetCountInStock}" HorizontalAlignment="Left" />
         </StackPanel>
         <TextBlock Width="80" VerticalAlignment="Center" Grid.Column="2" Margin="5" FontSize="26" 
         Text="{Binding DiscountAmount, StringFormat=' {0} %'}" />

@@ -5,6 +5,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.VisualTree;
+using KalugaTradeApp;
 using TradeApp;
 using TradeApp.Entities;
 using static TradeApp.Entities.Basket;
@@ -110,9 +111,41 @@ public partial class NewOrderView : UserControl
                 }
         }
 
-        private void BtnBuyItem_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void BtnBuyItem_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+               
+                var ComboPickupPoint = this.FindControl<ComboBox>("ComboPickupPoint");
+               if (ComboPickupPoint.SelectedItem == null)
+                {
+                    MessageWindow messageWindow = new MessageWindow("Не выбран пункт выдачи");
+                    await messageWindow.ShowDialog(App.MainWindow);
+                    return;
+                }
+                context = new TradeContext();
+                NewOrder.PickuppointId = (ComboPickupPoint.SelectedItem as PickupPoint).Id;
+                context.Orders.Add(NewOrder);
+                foreach (var item in Basket.GetBasket)
+                {
+                    OrderProduct orderProduct = new OrderProduct();
+                    orderProduct.OrderId = NewOrder.Id;
+                    orderProduct.ProductId = item.Key.Id;
+                    orderProduct.Count = item.Value.Count;
 
-      
+                    Product product = context.Products.FirstOrDefault(p => p.Id == item.Key.Id);
+                    if (item.Value.Count >= product.QuantityInStock)
+                        product.QuantityInStock = 0;
+                    else product.QuantityInStock -= item.Value.Count;
+                    
+                    context.OrderProducts.Add(orderProduct);
+
+                }
+                    context.SaveChanges();
+                    MessageWindow messageWindow1 = new MessageWindow("Заказ сохранен");
+                    await messageWindow1.ShowDialog(App.MainWindow);
+
+                    Basket.ClearBasket();
+                     var topLevel = TopLevel.GetTopLevel(this) as Window;
+            topLevel.Close();
+
         }
 }

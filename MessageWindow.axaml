@@ -1,0 +1,16 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="150"
+        MinHeight="150" MaxHeight="150"
+        MinWidth="200" MaxWidth="200"
+        x:Class="KalugaTradeApp.MessageWindow"
+         Icon="Assets/logo.png"
+        Title="MessageWindow">
+ 
+  <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"> 
+    <TextBlock x:Name="TextBlockMessage"/>
+    <Button Width="100" Height="30" Content="OK" x:Name="BtnOk" Click="BtnOkClick"/>
+</StackPanel>
+</Window>

@@ -100,21 +100,21 @@ public partial class TradeContext : DbContext
 
         modelBuilder.Entity<OrderProduct>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("order_product");
+            entity.HasKey(e => new { e.ProductId, e.OrderId }).HasName("order_product_pk");
 
-            entity.Property(e => e.Count).HasColumnName("count");
-            entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.ToTable("order_product");
+
             entity.Property(e => e.ProductId)
                 .HasMaxLength(10)
                 .HasColumnName("product_id");
+            entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.Property(e => e.Count).HasColumnName("count");
 
-            entity.HasOne(d => d.Order).WithMany()
+            entity.HasOne(d => d.Order).WithMany(p => p.OrderProducts)
                 .HasForeignKey(d => d.OrderId)
                 .HasConstraintName("order_product_order_fk");
 
-            entity.HasOne(d => d.Product).WithMany()
+            entity.HasOne(d => d.Product).WithMany(p => p.OrderProducts)
                 .HasForeignKey(d => d.ProductId)
                 .HasConstraintName("order_product_product_fk");
         });

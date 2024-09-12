@@ -33,6 +33,8 @@ public partial class Product
 
     public virtual Manufacturer Manufacturer { get; set; } = null!;
 
+    public virtual ICollection<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
+
     public virtual Supplier Supplier { get; set; } = null!;
 
     public virtual Unittype Unittype { get; set; } = null!;

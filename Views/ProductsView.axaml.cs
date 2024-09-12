@@ -27,7 +27,7 @@ public partial class ProductsView : UserControl
         Products = context.Products.Include(x => x.Manufacturer).
         Include(x => x.Category).
         Include(x => x.Supplier).
-        Include(x=>x.Unittype).ToList();
+        Include(x=>x.Unittype).OrderBy(x=> x.Title).ToList();
         DataContext = this;
         //ProductsListBox.ItemsSource = Products;
         var TextBlockCt = this.FindControl<TextBlock>("TextBlockCount");
@@ -61,7 +61,7 @@ private void UpdateData()
         var currentProducts = context.Products.OrderBy(p =>p.Title).ToList();
         // выбор только тех товаров, по определенному диапазону скидки
         if (ComboDiscont.SelectedIndex == 1) currentProducts = currentProducts.Where(p => p.DiscountAmount < 10).ToList();
-        if (ComboDiscont.SelectedIndex == 2) currentProducts = currentProducts.Where(p => (p.DiscountAmount >= 10 && p.DiscountAmount < 15)).ToList();
+        if (ComboDiscont.SelectedIndex == 2) currentProducts = currentProducts.Where(p => p.DiscountAmount >= 10 && p.DiscountAmount < 15).ToList();
         if (ComboDiscont.SelectedIndex == 3) currentProducts = currentProducts.Where(p => p.DiscountAmount >= 15).ToList();
         // выбор тех товаров, в названии которых есть поисковая строка
     var TBoxSearch = this.FindControl<TextBox>("TBoxSearch");
@@ -118,7 +118,15 @@ private void UpdateData()
     {
         var window = new OrderWindow();
         await window.ShowDialog(App.MainWindow);
-         var TextBlockBasketInfo = this.FindControl<TextBlock>("TextBlockBasketInfo");
+        context = new TradeContext();
+        Products = context.Products.Include(x => x.Manufacturer).
+        Include(x => x.Category).
+        Include(x => x.Supplier).
+        Include(x=>x.Unittype).OrderBy(x=> x.Title).ToList();
+        var ProductsListBox = this.FindControl<ListBox>("ProductsListBox");
+        ProductsListBox.ItemsSource = null;
+        ProductsListBox.ItemsSource = Products;
+        var TextBlockBasketInfo = this.FindControl<TextBlock>("TextBlockBasketInfo");
         TextBlockBasketInfo.Text = $"В корзине {Basket.GetCount} товаров";
         if (Basket.GetCount == 0)
         {
