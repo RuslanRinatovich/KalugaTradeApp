@@ -22,7 +22,8 @@
             <Setter Property="Padding" Value="5"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-    </Style>
+        </Style>
+        
     </Application.Styles>
    
 </Application>

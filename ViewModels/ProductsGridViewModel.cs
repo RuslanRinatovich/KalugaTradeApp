@@ -19,5 +19,6 @@ namespace ViewModels
             Include(x=>x.Unittype).ToList();
             Products = new ObservableCollection<Product>(products);
         }
+        
     }
 }

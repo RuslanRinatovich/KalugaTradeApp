@@ -15,6 +15,8 @@ public partial class Order
 
     public DateOnly DeliveryDate { get; set; }
 
+ 
+
     public string? Username { get; set; }
 
     public int GetCode { get; set; }
@@ -23,7 +25,7 @@ public partial class Order
 
     public virtual PickupPoint Pickuppoint { get; set; } = null!;
 
-    public virtual Status Status { get; set; } = null!;
+    public virtual Status Status { get; set; } = new Status();
 
     public virtual User? UsernameNavigation { get; set; }
 }

@@ -15,36 +15,39 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TradeApp
-build_property.ProjectDir = d:\KalugaTradeApp\
+build_property.ProjectDir = c:\KALUGA\Home\KalugaTradeApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[d:/KalugaTradeApp/App.axaml]
+[c:/KALUGA/Home/KalugaTradeApp/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[d:/KalugaTradeApp/LoginWindow.axaml]
+[c:/KALUGA/Home/KalugaTradeApp/LoginWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[d:/KalugaTradeApp/MainWindow.axaml]
+[c:/KALUGA/Home/KalugaTradeApp/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[d:/KalugaTradeApp/MessageWindow.axaml]
+[c:/KALUGA/Home/KalugaTradeApp/MessageWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[d:/KalugaTradeApp/OrderWindow.axaml]
+[c:/KALUGA/Home/KalugaTradeApp/OrderWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[d:/KalugaTradeApp/Views/NewOrderView.axaml]
+[c:/KALUGA/Home/KalugaTradeApp/Views/NewOrderView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[d:/KalugaTradeApp/Views/OrdersDataGridView.axaml]
+[c:/KALUGA/Home/KalugaTradeApp/Views/OrderEditView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[d:/KalugaTradeApp/Views/ProductsDataGridView.axaml]
+[c:/KALUGA/Home/KalugaTradeApp/Views/OrdersDataGridView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[d:/KalugaTradeApp/Views/ProductsEditView.axaml]
+[c:/KALUGA/Home/KalugaTradeApp/Views/ProductsDataGridView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[d:/KalugaTradeApp/Views/ProductsView.axaml]
+[c:/KALUGA/Home/KalugaTradeApp/Views/ProductsEditView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[c:/KALUGA/Home/KalugaTradeApp/Views/ProductsView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

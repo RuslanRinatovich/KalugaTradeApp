@@ -8,15 +8,17 @@ namespace ViewModels
 {
     public class OrdersGridViewModel
     {
-        public ObservableCollection<Order> Orders { get; }
-        TradeContext context;
+        public ObservableCollection<Order> Orders { get;}
+        
         public OrdersGridViewModel()
         {
-            context = new TradeContext();
+            TradeContext context = new TradeContext();
             List<Order> orders = context.Orders.Include(x => x.Status).
             Include(x => x.UsernameNavigation).
             Include(x => x.Pickuppoint).ToList();
             Orders = new ObservableCollection<Order>(orders);
         }
+
+        
     }
 }

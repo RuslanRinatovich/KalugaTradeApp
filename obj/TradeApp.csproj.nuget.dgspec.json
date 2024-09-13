@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "d:\\KalugaTradeApp\\TradeApp.csproj": {}
+    "c:\\KALUGA\\Home\\KalugaTradeApp\\TradeApp.csproj": {}
   },
   "projects": {
-    "d:\\KalugaTradeApp\\TradeApp.csproj": {
+    "c:\\KALUGA\\Home\\KalugaTradeApp\\TradeApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\KalugaTradeApp\\TradeApp.csproj",
+        "projectUniqueName": "c:\\KALUGA\\Home\\KalugaTradeApp\\TradeApp.csproj",
         "projectName": "TradeApp",
-        "projectPath": "d:\\KalugaTradeApp\\TradeApp.csproj",
-        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "d:\\KalugaTradeApp\\obj\\",
+        "projectPath": "c:\\KALUGA\\Home\\KalugaTradeApp\\TradeApp.csproj",
+        "packagesPath": "C:\\Users\\Main\\.nuget\\packages\\",
+        "outputPath": "c:\\KALUGA\\Home\\KalugaTradeApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Main\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
