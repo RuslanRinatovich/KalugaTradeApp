@@ -151,7 +151,10 @@ public partial class OrderEditView : UserControl
             doc.DifferentFirstPage = true;
             doc.Headers.First.InsertParagraph("ФИРМА ООО РУЧКИ");
             doc.InsertParagraph($"Заказ №{order.Id}"); // 
-
+            if (!String.IsNullOrEmpty(order.Username))
+            {
+                 doc.InsertParagraph($"на имя {order.GetUserFIO}"); // 
+            }
             doc.InsertParagraph($"Дата заказа: {order.CreateDate.ToLongDateString()}");
             doc.InsertParagraph($"Дата получения заказа: {order.DeliveryDate.ToLongDateString()}");
             PickupPoint pickupPoint = PickupPoints.First(p => p.Id == order.PickuppointId);

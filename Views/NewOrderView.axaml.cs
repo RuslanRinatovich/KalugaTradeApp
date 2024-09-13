@@ -187,7 +187,10 @@ public partial class NewOrderView : UserControl
             doc.DifferentFirstPage = true;
             doc.Headers.First.InsertParagraph("ФИРМА ООО РУЧКИ");
             doc.InsertParagraph($"Заказ №{order.Id}"); // 
-
+            if (App.CurrentUser != null)
+            {
+                 doc.InsertParagraph($"на имя {App.CurrentUser.GetFIO}"); // 
+            }
             doc.InsertParagraph($"Дата заказа: {order.CreateDate.ToLongDateString()}");
             doc.InsertParagraph($"Дата получения заказа: {order.DeliveryDate.ToLongDateString()}");
             PickupPoint pickupPoint = PickupPoints.First(p => p.Id == order.PickuppointId);
