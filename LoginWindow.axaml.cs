@@ -43,8 +43,6 @@ public partial class LoginWindow : Window
             // скрываем строки с капчой
             ImageCaptcha.Height = 0;
             StackPanelCaptcha.IsVisible = false;
-            TbLogin.Text = "loginDEpxl2018";
-            TbPass.Text = "P6h4Jq";
         }
 
           // обаботчик события срабатывает через каждые т секунд
@@ -52,26 +50,28 @@ public partial class LoginWindow : Window
         {
             seconds -= 1;
             var TextBlockTime = this.FindControl<TextBlock>("TextBlockTime");
-            var BtnOk = this.FindControl<Button>("BtnOk");
-            var BtnCancel = this.FindControl<Button>("BtnCancel");
+            var ButtonOk = this.FindControl<Button>("ButtonOk");
+            var ButtonCancel = this.FindControl<Button>("ButtonCancel");
             TextBlockTime.Text = $"Осталось {seconds} секунд до разблокировки";
             if (seconds == 0) // оставливаем таймер, разблокировываем кнопку
             {
-                BtnOk.IsEnabled = true;
-                BtnCancel.IsEnabled = true;
+                ButtonOk.IsEnabled = true;
+                ButtonCancel.IsEnabled = true;
                 TextBlockTime.Text = "";
                 timer.Stop();
             }
             
         }
 
-     private async void BtnOkClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+     private async void ButtonOkClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
        
         try
             {  //загрузка всех пользователей из БД в список
-                TradeContext context = new TradeContext();;
-                User user = context.Users.FirstOrDefault(p => p.Password == TbPass.Text && p.Username == TbLogin.Text);
+                TradeContext context = new TradeContext();
+                var TextBoxLogin = this.FindControl<TextBox>("TextBoxLogin");
+                var TextBoxPassword = this.FindControl<TextBox>("TextBoxPassword");
+                User user = context.Users.FirstOrDefault(p => p.Password == TextBoxPassword.Text && p.Username == TextBoxLogin.Text);
                 // удачный вход после ввода пароля и логина или пароля, логина и капчи
                 var TbCaptcha = this.FindControl<TextBox>("TbCaptcha");
                 if ((user != null && !b) || (user != null && b && TbCaptcha.Text == captcha))
@@ -96,13 +96,17 @@ public partial class LoginWindow : Window
                     if (b) // если неправильно ввели логин, пароль и капчу 
                     {
                         // задаем параметры таймера, событие Tick срабатывает через каждую секунду
+
+                         var TextBlockTime = this.FindControl<TextBlock>("TextBlockTime");
+                          var ButtonOk = this.FindControl<Button>("ButtonOk");
+                           var ButtonCancel = this.FindControl<Button>("ButtonCancel");
                         timer.Interval = TimeSpan.FromSeconds(1);
                         // блокируем кнопку
-                        BtnOk.IsEnabled = false;
-                        BtnCancel.IsEnabled = false;
+                        ButtonOk.IsEnabled = false;
+                        ButtonCancel.IsEnabled = false;
                         // на  10 секунд
                         seconds = 10;
-                        var TextBlockTime = this.FindControl<TextBlock>("TextBlockTime");
+                       
                         // отображает сколько секунд осталось до разблокировки
                         TextBlockTime.Text = $"Осталось {seconds} секунд до разблокировки";
                         // включаем таймер
@@ -123,19 +127,19 @@ public partial class LoginWindow : Window
 
 
     }
-     private void BtnCancelClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+     private void ButtonCancelClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         this.Close();    }
 
 
-    private void BtnGuestModeClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private void ButtonGuestModeClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         App.CurrentUser = null;
         MainWindow main = new MainWindow();
         main.Show();
         this.Hide();
     }
-     private void BtnRenewCaptcha_Click(object sender,  Avalonia.Interactivity.RoutedEventArgs e)
+     private void ButtonRenewCaptcha_Click(object sender,  Avalonia.Interactivity.RoutedEventArgs e)
         {
             // кнопка обновить капчу
             ShowCaptcha();
@@ -161,10 +165,10 @@ private void Window_Activated(object? senders,  EventArgs e)
         ImageCaptcha.Height = 0;
         StackPanelCaptcha.IsVisible = false;
         this.Height = 180;
-        var TbLogin = this.FindControl<TextBox>("TbLogin");
-        var TbPass = this.FindControl<TextBox>("TbPass");
-        TbPass.Text = "";
-        TbLogin.Text = "";
+        var TextBoxLogin = this.FindControl<TextBox>("TextBoxLogin");
+        var TextBoxPassword = this.FindControl<TextBox>("TextBoxPassword");
+        TextBoxPassword.Text = "";
+        TextBoxLogin.Text = "";
 
     }
 }

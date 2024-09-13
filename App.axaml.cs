@@ -14,7 +14,6 @@ public partial class App : Application
     public static LoginWindow StartWindow;
     public static User CurrentUser = null;
 
-    public static List<String> PagesStack = new List<string>();
 
     public override void Initialize()
     {

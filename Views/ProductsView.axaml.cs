@@ -15,22 +15,19 @@ namespace Views;
 public partial class ProductsView : UserControl
 {
        public List<Product> Products {get; set;}
-       public String PageTitle = "ProductsView";
     int _itemcount = 0;
      TradeContext context;
          public ProductsView()
     {
         
         this.InitializeComponent();
-        App.PagesStack.Add(PageTitle);
-
+        Basket.ClearBasket();
         context = new TradeContext();
         Products = context.Products.Include(x => x.Manufacturer).
         Include(x => x.Category).
         Include(x => x.Supplier).
         Include(x=>x.Unittype).OrderBy(x=> x.Title).ToList();
         DataContext = this;
-        //ProductsListBox.ItemsSource = Products;
         var TextBlockCt = this.FindControl<TextBlock>("TextBlockCount");
         _itemcount = Products.Count;
         TextBlockCt.Text = $" Результат запроса: {Products.Count} записей из {_itemcount}";

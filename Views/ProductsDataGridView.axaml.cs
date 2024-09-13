@@ -14,14 +14,12 @@ namespace Views;
 
 public partial class ProductsDataGridView : UserControl
 {
-    public String PageTitle = "ProductsDataGridView";
     int x = 0;
      TradeContext context;
    
     public ProductsDataGridView()
     {
         InitializeComponent();
-        App.PagesStack.Add(PageTitle);
     }
 
        private void InitializeComponent()

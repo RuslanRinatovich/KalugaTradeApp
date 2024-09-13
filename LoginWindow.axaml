@@ -30,18 +30,18 @@
     <TextBlock Grid.Row="0" Text="ООО РУЧКИ" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{StaticResource additional}" FontSize="20" FontWeight="Bold" />
 <StackPanel Orientation="Horizontal" Grid.Row="1">
     <TextBlock Grid.Row="1" Text="Логин" Margin="20 0" VerticalAlignment="Center" Width="120"/>
-    <TextBox x:Name="TbLogin" Grid.Column="1" Width="200"/>
+    <TextBox x:Name="TextBoxLogin" Grid.Column="1" Width="200"/>
 </StackPanel>
 <StackPanel Orientation="Horizontal" Grid.Row="2"> 
   <TextBlock  Grid.Row="2" Grid.Column="0" Text="Пароль" Margin="20 0" VerticalAlignment="Center" Width="120"/>
-    <TextBox x:Name="TbPass" Height="30" Width="200" PasswordChar="*" />
+    <TextBox x:Name="TextBoxPassword" Height="30" Width="200" PasswordChar="*" />
   </StackPanel >
 
    <StackPanel x:Name="StackPanelCaptcha" Orientation="Horizontal" Grid.Row="3">
     <Button Width="24" Height="24" Padding="0" VerticalContentAlignment="Top" 
                     Content="O" HorizontalAlignment="Left" VerticalAlignment="Top"
-                    x:Name="BtnRenewCaptcha" 
-                    Click="BtnRenewCaptcha_Click"/>
+                    x:Name="ButtonRenewCaptcha" 
+                    Click="ButtonRenewCaptcha_Click"/>
             <TextBlock 
                 Grid.Row="2" Grid.Column="0"
                 Text="Введите капчу" Margin="20 0" 
@@ -55,9 +55,9 @@
         
 
   <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center"> 
-    <Button Width="100" Content="Войти"  x:Name="BtnOk" Click="BtnOkClick"/>
-    <Button Width="100"  Content="Закрыть" x:Name="BtnCancel" Click="BtnCancelClick"/>
-    <Button Width="100"  Content="Гость" x:Name="BtnGuestMode" Click="BtnGuestModeClick"/>
+    <Button Width="100" Content="Войти"  x:Name="ButtonOk" Click="ButtonOkClick"/>
+    <Button Width="100"  Content="Закрыть" x:Name="ButtonCancel" Click="ButtonCancelClick"/>
+    <Button Width="100"  Content="Гость" x:Name="ButtonGuestMode" Click="ButtonGuestModeClick"/>
 </StackPanel>
 <TextBlock 
             Grid.Row="6" 

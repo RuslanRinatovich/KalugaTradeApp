@@ -20,7 +20,6 @@ namespace Views;
 
 public partial class ProductsEditView : UserControl
 {
-    public String PageTitle = "ProductsEditView";
     public bool isNew = false;
     public Product Product { get; set; }
     public List<Category> Categories  {get; set;}
@@ -31,7 +30,6 @@ public partial class ProductsEditView : UserControl
     public ProductsEditView(Product product)
     {
         InitializeComponent();
-        App.PagesStack.Add(PageTitle);
         context = new TradeContext();
         Categories = context.Categories.OrderBy(c => c.Title).ToList();
         Manufacturers = context.Manufacturers.OrderBy(c => c.Title).ToList();
