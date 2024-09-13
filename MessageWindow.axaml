@@ -2,15 +2,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="150"
-        MinHeight="150" MaxHeight="150"
-        MinWidth="200" MaxWidth="200"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="200"
+        MinHeight="150" MaxHeight="400" 
+        MinWidth="250"  MaxWidth="600" 
         x:Class="KalugaTradeApp.MessageWindow"
-         Icon="Assets/logo.png"
-        Title="MessageWindow">
- 
-  <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"> 
-    <TextBlock x:Name="TextBlockMessage"/>
-    <Button Width="100" Height="30" Content="OK" x:Name="BtnOk" Click="BtnOkClick"/>
-</StackPanel>
+         Icon="Assets/logo.png" WindowStartupLocation="CenterScreen"
+         
+         ExtendClientAreaChromeHints="NoChrome" ExtendClientAreaToDecorationsHint="True"
+        Title="Внимание">
+
+ <Border BorderThickness="1" BorderBrush="Black"> 
+  <Grid>
+    <Grid.RowDefinitions>
+    <RowDefinition Height="40" />
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="34"/>
+     </Grid.RowDefinitions> 
+    <Grid Background="{StaticResource additional}" Height="40"/>
+    <TextBlock x:Name="TextBlockHeader" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+    <TextBlock Margin="5 10 5 10" x:Name="TextBlockMessage" Grid.Row="1"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Content="OK" Grid.Row="2" x:Name="BtnOk" Click="BtnOkClick"/>
+</Grid>
+</Border>
 </Window>

@@ -61,7 +61,8 @@ Stretch="Uniform"  Source="{Binding GetImage}" />
         <TextBlock Text="{Binding Manufacturer.Title, StringFormat={}Производитель: {0}}"/>
         <TextBlock Text="{Binding Cost, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding GetCostWithDiscontVisibility}" TextDecorations="Strikethrough" Foreground="Red"/>
         <TextBlock Text="{Binding Cost, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding GetCostWithoutDiscontVisibility}" />
-        <TextBlock Text="{Binding GetPriceWithDiscount, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding GetVisibility}" Foreground="Green"/>
+        <TextBlock Text="{Binding GetPriceWithDiscount, StringFormat='C'}" FontSize="18" FontWeight="Bold"
+         IsVisible="{Binding GetVisibility}" Foreground="Green"/>
           <TextBlock FontSize="12" Text="{Binding Path=GetCountInStock}" HorizontalAlignment="Left" />
         </StackPanel>
         <TextBlock Width="80" VerticalAlignment="Center" Grid.Column="2" Margin="5" FontSize="26" 
@@ -75,9 +76,10 @@ Stretch="Uniform"  Source="{Binding GetImage}" />
 </ContextMenu>
 </ListBox.ContextMenu>
 		</ListBox>
-  <TextBlock Grid.Row="2" x:Name="TextBlockCount" Width="300" HorizontalAlignment="Left" />
-  <TextBlock Grid.Row="2" x:Name="TextBlockBasketInfo" Width="200" IsVisible = "false"
-HorizontalAlignment="Right" Margin="0 0 140 0" />
+  <TextBlock Grid.Row="2" x:Name="TextBlockCount" Margin="10 0 0 0"
+   FontSize="14" FontWeight="Bold" VerticalAlignment="Center" Width="300"
+    HorizontalAlignment="Left" />
+  <TextBlock Grid.Row="2" x:Name="TextBlockBasketInfo" FontSize="14" FontWeight="Bold" Width="200" IsVisible = "false" HorizontalAlignment="Right" Margin="0 0 140 0" />
 <Button Grid.Row="2" Width="120" HorizontalAlignment="Right" Content="Корзина" IsVisible = "false" x:Name="BtnBasket" Click="BtnBasket_Click"/>
   </Grid>
 </UserControl>

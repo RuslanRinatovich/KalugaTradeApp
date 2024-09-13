@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+              xmlns:vm="using:ViewModels"
+             x:Class="Views.OrdersDataGridView"
+             x:DataType="vm:OrdersGridViewModel">
+  <UserControl.DataContext>
+    <vm:OrdersGridViewModel />
+  </UserControl.DataContext>
+<Grid>
+  <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="40"/>
+</Grid.RowDefinitions>
+
+    <DataGrid Grid.Row="0"
+				  x:Name="OrdersDataGrid" 
+                   AutoGenerateColumns="False"
+                   IsReadOnly="true" 
+                   GridLinesVisibility="All"
+          BorderThickness="1" 
+          BorderBrush="Gray" RowHeight="40"
+          Background="{StaticResource main}"
+          ItemsSource="{Binding Orders}">
+          <DataGrid.Columns>
+            
+    <DataGridTextColumn Binding="{Binding Id}" Header="Номер заказа" />
+    <DataGridTextColumn Binding="{Binding UsernameNavigation.FirstName}" Header="Клиент" Width="2*"/>
+    <DataGridTextColumn Binding="{Binding CreateDate}" Header="Дата создания" Width="2*"/>
+    <DataGridTextColumn Binding="{Binding DeliveryDate}" Header="Дата доставки" Width="*"/>
+    <DataGridTextColumn Binding="{Binding GetTotalCost, StringFormat='C'}" Header="Стоимость" Width="*"/>
+    <DataGridTextColumn Binding="{Binding Pickuppoint.Address}" Header="Пункт выдачи" Width="*"/>
+    <DataGridTextColumn Binding="{Binding GetCode}" Header="Код выдачи" Width="*"/>
+    <DataGridTemplateColumn Width="auto" Header="Редактировать">
+        <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+                <Button   Content="..."  Margin="0"/>
+        </DataTemplate>
+        </DataGridTemplateColumn.CellTemplate>
+</DataGridTemplateColumn>
+<DataGridTemplateColumn Width="auto" Header="Удалить">
+        <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+                <Button   Content="X"  Margin="0"/>
+        </DataTemplate>
+        </DataGridTemplateColumn.CellTemplate>
+</DataGridTemplateColumn>
+  </DataGrid.Columns>
+      </DataGrid>
+</Grid>
+</UserControl>
+

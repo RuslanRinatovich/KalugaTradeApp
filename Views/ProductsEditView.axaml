@@ -21,7 +21,7 @@
     <RowDefinition Height="auto"/>
     <RowDefinition Height="Auto"/>
     <RowDefinition Height="*"/>
-    <RowDefinition Height="200"/>
+    <RowDefinition Height="60"/>
   </Grid.RowDefinitions>
   <Grid.ColumnDefinitions>
     <ColumnDefinition Width="245"/>
@@ -43,7 +43,7 @@ Click="BtnLoadClick" Content="Загрузить" Width="79"/>
 <TextBlock Grid.Row="9" Grid.Column="0" Text="Размер действующей скидки" Margin="20 0" />
 <TextBlock Grid.Row="10" Grid.Column="0" Text="Стоимость за единицу" Margin="20 0" />
 <TextBlock Grid.Row="11" Grid.Column="0" Text="Описание" Margin="20 0"/>
-<TextBlock x:Name="TextBlockError" Grid.Row="12" Grid.Column="1" Text="Ошибки" Margin="20 0"/>
+
 <Image x:Name="ImagePhoto" Source="{Binding Product.GetImage}"
 Grid.Row="0" Grid.Column="1" Margin="10 0 0 0"
 VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="100"/>
@@ -92,10 +92,9 @@ Grid.Row="10" Grid.Column="1" Padding="0,2" />
 <TextBox x:Name="TextBoxDescription" Text="{Binding Product.Description}"
 TextWrapping="Wrap" Grid.Row="11" Grid.Column="1" Padding="0,2" />
 
-
-    <Button x:Name="BtnSave" Grid.Row="12" Content="Сохранить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Click="SaveButton_Click" 
-    Grid.Column="0"/>
-    <Button x:Name="BtnCancel" Grid.Row="12" Content="Отмена" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Click="CancelButton_Click" 
-    Grid.Column="0" Margin="250 0 0 0"/>
+<StackPanel Orientation="Horizontal" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+    <Button x:Name="BtnSave" Content="Сохранить"  Width="120" Click="SaveButton_Click" />
+    <Button x:Name="BtnCancel" Content="Отмена" Width="120" Click="CancelButton_Click" />
+    </StackPanel>
   </Grid>
 </UserControl>

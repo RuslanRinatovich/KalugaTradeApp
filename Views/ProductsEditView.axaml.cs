@@ -11,6 +11,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform.Storage;
 using Avalonia.VisualTree;
+using KalugaTradeApp;
 using Microsoft.EntityFrameworkCore;
 using TradeApp;
 using TradeApp.Entities;
@@ -55,15 +56,16 @@ public partial class ProductsEditView : UserControl
         AvaloniaXamlLoader.Load(this);
     }
 
-    private void SaveButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void SaveButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
             StringBuilder _error = CheckFields();
             // если ошибки есть, то выводим ошибки в MessageBox
             // и прерываем выполнение
             if (_error.Length > 0)
             {
-                var TextBlockError = this.FindControl<TextBlock>("TextBlockError");
-                TextBlockError.Text =_error.ToString();
+                 MessageWindow messageWindow = new MessageWindow( "Ошибка" ,_error.ToString());
+                await messageWindow.ShowDialog(App.MainWindow);
+
                 return;
             }
 

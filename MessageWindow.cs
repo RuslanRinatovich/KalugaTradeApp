@@ -12,9 +12,12 @@ namespace KalugaTradeApp;
 public partial class MessageWindow : Window
 {
 
-    public MessageWindow(String message)
+
+    public MessageWindow(String header, String message)
     {
         InitializeComponent();
+        var TextBlockHeader = this.FindControl<TextBlock>("TextBlockHeader");
+        TextBlockHeader.Text = header;
         var TextBlockMessage = this.FindControl<TextBlock>("TextBlockMessage");
         TextBlockMessage.Text = message;
 

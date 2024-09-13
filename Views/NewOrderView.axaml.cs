@@ -1,13 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform.Storage;
 using Avalonia.VisualTree;
 using KalugaTradeApp;
 using TradeApp;
 using TradeApp.Entities;
+using Xceed.Document.NET;
+using System.Threading.Tasks;
+using Xceed.Words.NET;
 using static TradeApp.Entities.Basket;
 
 
@@ -113,17 +118,24 @@ public partial class NewOrderView : UserControl
 
         private async void BtnBuyItem_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-               
+               if (Basket.GetCount == 0)
+               {
+                    MessageWindow messageWindow = new MessageWindow("Ошибка", "В корзине нет товаров");
+                    await messageWindow.ShowDialog(App.MainWindow);
+                    return;
+               }
+
                 var ComboPickupPoint = this.FindControl<ComboBox>("ComboPickupPoint");
                if (ComboPickupPoint.SelectedItem == null)
                 {
-                    MessageWindow messageWindow = new MessageWindow("Не выбран пункт выдачи");
+                    MessageWindow messageWindow = new MessageWindow("Ошибка", "Не выбран пункт выдачи");
                     await messageWindow.ShowDialog(App.MainWindow);
                     return;
                 }
                 context = new TradeContext();
                 NewOrder.PickuppointId = (ComboPickupPoint.SelectedItem as PickupPoint).Id;
                 context.Orders.Add(NewOrder);
+                context.SaveChanges();
                 foreach (var item in Basket.GetBasket)
                 {
                     OrderProduct orderProduct = new OrderProduct();
@@ -140,7 +152,8 @@ public partial class NewOrderView : UserControl
 
                 }
                     context.SaveChanges();
-                    MessageWindow messageWindow1 = new MessageWindow("Заказ сохранен");
+                    await Print(NewOrder);
+                    MessageWindow messageWindow1 = new MessageWindow("Информация", "Заказ сохранен");
                     await messageWindow1.ShowDialog(App.MainWindow);
 
                     Basket.ClearBasket();
@@ -148,4 +161,71 @@ public partial class NewOrderView : UserControl
             topLevel.Close();
 
         }
+
+     private async Task Print(Order order)
+    {
+         
+        if (order != null)
+        {
+            var topLevel = TopLevel.GetTopLevel(App.MainWindow);
+
+        // Start async operation to open the dialog.
+        var file = await topLevel.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
+         {
+            Title = "Save Word File"
+        });
+
+        if (file is not null)
+        {
+            if (!Directory.Exists("docs"))
+            Directory.CreateDirectory("docs");
+            string fileName = Path.Combine("docs",$"{order.Id}.docx");
+            var doc = DocX.Create(file.Path.AbsolutePath);
+            doc.AddHeaders(); 
+            doc.AddFooters(); 
+            doc.DifferentFirstPage = true;
+            doc.Headers.First.InsertParagraph("ФИРМА ООО РУЧКИ");
+            doc.InsertParagraph($"Заказ №{order.Id}"); // 
+
+            doc.InsertParagraph($"Дата заказа: {order.CreateDate.ToLongDateString()}");
+            doc.InsertParagraph($"Дата получения заказа: {order.DeliveryDate.ToLongDateString()}");
+            PickupPoint pickupPoint = PickupPoints.First(p => p.Id == order.PickuppointId);
+            doc.InsertParagraph($"Пункт выдачи: {pickupPoint.Address}");
+            doc.InsertParagraph($"Код получения: {order.GetCode}");
+           
+
+            Table table = doc.AddTable(order.OrderProducts.Count+1, 7);
+            table.Design = TableDesign.ColorfulList;
+            table.Alignment = Alignment.center;
+            table.AutoFit = AutoFit.Contents;
+
+            // Add headers to the table
+            table.Rows[0].Cells[0].Paragraphs[0].Append("№").Bold();
+            table.Rows[0].Cells[1].Paragraphs[0].Append("Наименование товара").Bold();
+            table.Rows[0].Cells[2].Paragraphs[0].Append("Количество").Bold();
+            table.Rows[0].Cells[3].Paragraphs[0].Append("Стоимость товара без скидки").Bold();
+            table.Rows[0].Cells[4].Paragraphs[0].Append("Скидка").Bold();
+            table.Rows[0].Cells[5].Paragraphs[0].Append("Стоимость товара со скидкой").Bold();
+             table.Rows[0].Cells[6].Paragraphs[0].Append("Итого").Bold();
+            // Add data to the table
+            int row = 1;
+            double total = 0;
+           foreach(OrderProduct item in order.OrderProducts)
+           {
+                 table.Rows[row].Cells[0].Paragraphs[0].Append($"{row}").Bold();
+                 table.Rows[row].Cells[1].Paragraphs[0].Append($"{item.Product.Title}").Bold();
+                 table.Rows[row].Cells[2].Paragraphs[0].Append($"{item.Count}").Bold();
+                 table.Rows[row].Cells[3].Paragraphs[0].Append($"{item.Product.Cost} руб.").Bold();
+                 table.Rows[row].Cells[4].Paragraphs[0].Append($"{item.Product.DiscountAmount}%").Bold();
+                 table.Rows[row].Cells[5].Paragraphs[0].Append($"{item.Product.GetPriceWithDiscount} руб.").Bold();
+                 table.Rows[row].Cells[6].Paragraphs[0].Append($"{item.GetPrice} руб.").Bold();
+                 total+= item.GetPrice;
+                row++;
+           }
+           doc.InsertTable(table);
+           doc.InsertParagraph($"Итого: {total} руб."); // 
+            doc.Save(); // save changes to file
+        }
+        }
+    }
 }

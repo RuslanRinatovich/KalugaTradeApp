@@ -55,8 +55,7 @@
 </DataGridTemplateColumn>
   </DataGrid.Columns>
       </DataGrid>
-<Button x:Name="BtnAdd" Grid.Row="1" Width="100" HorizontalAlignment="Left" Margin="3"
-Content="Добавить" Click="AddButton_Click"/>
-      <TextBlock x:Name="TextBlockResult" Text="HelloWordlsd" Grid.Row="1"/>
+<Button x:Name="BtnAdd" Grid.Row="1" Width="100" HorizontalAlignment="Left" Margin="3" Content="Добавить" Click="AddButton_Click"/>
+     
 </Grid>
 </UserControl>

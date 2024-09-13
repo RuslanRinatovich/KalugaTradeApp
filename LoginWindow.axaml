@@ -2,12 +2,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="200"
-        MinHeight="200" MaxHeight="200"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="150"
+        MinHeight="150" MaxHeight="500"
         MinWidth="400" MaxWidth="400"
         Icon="/Assets/icon.ico"
-        x:Class="KalugaTradeApp.LoginWindow"
-        Title="Вход" WindowStartupLocation="CenterOwner">
+        x:Class="TradeApp.LoginWindow"
+        Title="Вход" WindowStartupLocation="CenterOwner" 
+         ExtendClientAreaChromeHints="NoChrome" ExtendClientAreaToDecorationsHint="True"
+         Activated="Window_Activated"
+         >
+  <Border BorderThickness="1" BorderBrush="Black"> 
 <Grid>
 <Grid.ColumnDefinitions>
     <ColumnDefinition />
@@ -16,7 +20,10 @@
     <RowDefinition Height="40"/>
       <RowDefinition Height="34"/>
       <RowDefinition Height="34"/>
+       <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
       <RowDefinition Height="40"/>
+       <RowDefinition Height="40"/>
 </Grid.RowDefinitions>
     <Grid Background="{StaticResource additional}" />
 <Image Source="Assets/logo.png" Margin="10" HorizontalAlignment="Left" />
@@ -29,9 +36,34 @@
   <TextBlock  Grid.Row="2" Grid.Column="0" Text="Пароль" Margin="20 0" VerticalAlignment="Center" Width="120"/>
     <TextBox x:Name="TbPass" Height="30" Width="200" PasswordChar="*" />
   </StackPanel >
-  <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center"> 
-    <Button Width="100" Height="30" Content="OK" x:Name="BtnOk" Click="BtnOkClick"/>
-    <Button Width="100" Height="30" Content="Cancel" x:Name="BtnCancel" Click="BtnCancelClick"/>
+
+   <StackPanel x:Name="StackPanelCaptcha" Orientation="Horizontal" Grid.Row="3">
+    <Button Width="24" Height="24" Padding="0" VerticalContentAlignment="Top" 
+                    Content="O" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    x:Name="BtnRenewCaptcha" 
+                    Click="BtnRenewCaptcha_Click"/>
+            <TextBlock 
+                Grid.Row="2" Grid.Column="0"
+                Text="Введите капчу" Margin="20 0" 
+                VerticalAlignment="Center" Width="120"/>
+            <TextBox x:Name="TbCaptcha" 
+                     Grid.Column="1"
+                     Width="200"/>
+        </StackPanel >
+
+        <Image Grid.Row="4" x:Name="ImageCaptcha" Height="100" Width="300" VerticalAlignment="Top"/>
+        
+
+  <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center"> 
+    <Button Width="100" Content="Войти"  x:Name="BtnOk" Click="BtnOkClick"/>
+    <Button Width="100"  Content="Закрыть" x:Name="BtnCancel" Click="BtnCancelClick"/>
+    <Button Width="100"  Content="Гость" x:Name="BtnGuestMode" Click="BtnGuestModeClick"/>
 </StackPanel>
+<TextBlock 
+            Grid.Row="6" 
+            x:Name="TextBlockTime"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" />
   </Grid>
+  </Border>
 </Window>

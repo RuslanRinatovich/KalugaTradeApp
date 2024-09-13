@@ -20,6 +20,7 @@ public partial class ProductsView : UserControl
      TradeContext context;
          public ProductsView()
     {
+        
         this.InitializeComponent();
         App.PagesStack.Add(PageTitle);
 
@@ -32,7 +33,7 @@ public partial class ProductsView : UserControl
         //ProductsListBox.ItemsSource = Products;
         var TextBlockCt = this.FindControl<TextBlock>("TextBlockCount");
         _itemcount = Products.Count;
-        TextBlockCt.Text = _itemcount.ToString();
+        TextBlockCt.Text = $" Результат запроса: {Products.Count} записей из {_itemcount}";
     }
 
      private void InitializeComponent()
