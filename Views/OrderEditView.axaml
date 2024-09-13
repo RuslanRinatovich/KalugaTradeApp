@@ -78,9 +78,9 @@ HorizontalAlignment="Left" FontWeight="Bold" />
         <TextBlock Text="{Binding Key.Cost, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding Key.GetCostWithDiscontVisibility}" TextDecorations="Strikethrough" Foreground="Red"/>
         <TextBlock Text="{Binding Key.Cost, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding Key.GetCostWithoutDiscontVisibility}" />
         <TextBlock Text="{Binding Key.GetPriceWithDiscount, StringFormat='C'}" FontSize="18" FontWeight="Bold" IsVisible="{Binding Key.GetVisibility}" Foreground="Green"/>
-             <TextBlock FontSize="14" Text="{Binding Path=Value.Count, StringFormat={} количество: {0}}" Width="300" HorizontalAlignment="Left" Tag="{Binding Path=Key}" />
-          <TextBlock FontSize="12" Text="{Binding Path=Key.GetCountInStock}" HorizontalAlignment="Left" />
-          <TextBlock FontSize="16" Text="{Binding Path=Value.Total, StringFormat={}итого: {0:F2} руб.}" Width="300" HorizontalAlignment="Left" />
+        <TextBlock FontSize="14" Text="{Binding Path=Value.Count, StringFormat={} количество: {0}}" Width="300" HorizontalAlignment="Left" Tag="{Binding Path=Key}" />
+        <TextBlock FontSize="12" Text="{Binding Path=Key.GetCountInStock}" HorizontalAlignment="Left" />
+        <TextBlock FontSize="16" Text="{Binding Path=Value.Total, StringFormat={}итого: {0:F2} руб.}" Width="300" HorizontalAlignment="Left" />
           
         </StackPanel>
         <TextBlock Width="80" VerticalAlignment="Center" Grid.Column="2" Margin="5" FontSize="26" Text="{Binding Key.DiscountAmount, StringFormat=' {0} %'}" />

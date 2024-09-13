@@ -14,6 +14,7 @@ public partial class App : Application
     public static LoginWindow StartWindow;
     public static User CurrentUser = null;
 
+    public static Basket MainBasket = new Basket();
 
     public override void Initialize()
     {

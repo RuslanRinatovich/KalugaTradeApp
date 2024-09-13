@@ -102,7 +102,7 @@ public partial class MainWindow : Window
 
     private void Window_Closing(object? senders, WindowClosingEventArgs e)
     {
-        Basket.ClearBasket();
+       // Basket.ClearBasket();
         App.StartWindow.Show();
     }
 }

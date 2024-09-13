@@ -8,45 +8,51 @@ namespace TradeApp.Entities;
 /// </summary>
 public class Basket
 {
-    public static Dictionary<Product, BuyItem> GetBasket { get; } = new  Dictionary<Product, BuyItem>();
+    public  Dictionary<Product, BuyItem> GetBasket { get; } = new  Dictionary<Product, BuyItem>();
     /// <summary>
     /// Value словаря - количество товара и стоимость
     /// </summary>
+    
     public struct BuyItem
         {
             public int Count { get; set; }
-            public double Total { get; set; }
+            public double Cost { get; set; }
+             public double Total { get; set; }
         }
     /// <summary>
     /// Словарь хранит товар в качестве ключа и BuyItem в качестве значения
     /// </summary>
     
+    
+
     // очистка корзины
-    public static void ClearBasket()
+    public void ClearBasket()
     {
-        GetBasket.Clear();
+        this.GetBasket.Clear();
     }
     /// <summary>
     /// Добавление товара в корзину
     /// </summary>
     /// <param name="product">Добавляемый товар</param>
-    public static void AddProductInBasket(Product product)
+    public void AddProductInBasket(Product product)
     {
     // если такой товар есть в корзине
-        if (GetBasket.ContainsKey(product))
+        if (this.GetBasket.ContainsKey(product))
         {
             // увеличиваем его количество на +1
-            int k = GetBasket[product].Count + 1;
+            int k = this.GetBasket[product].Count + 1;
             // пересчистваем стоимость
             double p = Convert.ToDouble(product.GetPriceWithDiscount) * k;
-            GetBasket[product] = new BuyItem { Count = k, Total = p };
+            double c = Convert.ToDouble(product.Cost) * k;
+            this.GetBasket[product] = new BuyItem { Count = k, Cost = c, Total = p };
         }
     
         else
         {
             // добавляем новый товар в корзину в количесьве 1 шт
             double p = Convert.ToDouble(product.GetPriceWithDiscount);
-            GetBasket[product] = new BuyItem { Count = 1, Total = p };
+            double c = Convert.ToDouble(product.Cost);
+            this.GetBasket[product] = new BuyItem { Count = 1, Cost = c, Total = p };
         }
     }
     /// <summary>
@@ -54,13 +60,14 @@ public class Basket
     /// </summary>
     /// <param name="product">Товар</param>
     /// <param name="count">количество товара</param>
-    public static void SetCount(Product product, int count)
+    public  void SetCount(Product product, int count)
     {
-        if (GetBasket.ContainsKey(product))
+        if (this.GetBasket.ContainsKey(product))
         {
             int k = count;
             double p = Convert.ToDouble(product.GetPriceWithDiscount) * k;
-            GetBasket[product] = new BuyItem { Count = k, Total = p };
+            double c = Convert.ToDouble(product.Cost) * k;
+            this.GetBasket[product] = new BuyItem { Count = k, Cost = c, Total = p };
         // если количество 0 или меньше 0 удаляем товар из корзины
             if (k <= 0)
                 {
@@ -72,9 +79,9 @@ public class Basket
     /// Удаляем товар product из корзины
     /// </summary>
     /// <param name="product">Удаляемый товар</param>
-    public static void DeleteProductFromBasket(Product product)
+    public  void DeleteProductFromBasket(Product product)
     {
-    if (GetBasket.ContainsKey(product))
+    if (this.GetBasket.ContainsKey(product))
             {
                 GetBasket.Remove(product);
             }
@@ -82,7 +89,7 @@ public class Basket
     /// <summary>
     /// Cтоимость всех товаров в корзине
     /// </summary>
-    public static double GetTotalCost
+    public  double GetTotalCost
     {
         get
         {
@@ -94,10 +101,34 @@ public class Basket
             return sum;
         }
     }
+
+    public  double GetCostWithoutDiscont
+    {
+        get
+        {
+            double sum = 0;
+            foreach (var item in GetBasket)
+                {
+                sum += item.Value.Cost;
+                }
+            return sum;
+        }
+    }
+
+     public int GetTotalDiscount
+    {
+        get
+        {
+            int discount = (int) Math.Round((GetCostWithoutDiscont - GetTotalCost) / GetTotalCost * 100);
+            if (discount < 0)
+                discount = 0;
+            return discount;
+        }
+    }
     /// <summary>
     /// Количество товаров в корзине
     /// </summary>
-    public static int GetCount
+    public  int GetCount
         {
             get
                 {
@@ -107,7 +138,7 @@ public class Basket
     /// <summary>
     /// Возвращает true, если на складе каждого товара не меньше 3 единиц
     /// </summary>
-    public static bool IsOnStock
+    public bool IsOnStock
     {
         get
         {

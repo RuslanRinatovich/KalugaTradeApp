@@ -15,13 +15,14 @@ namespace Views;
 public partial class ProductsView : UserControl
 {
        public List<Product> Products {get; set;}
+     
     int _itemcount = 0;
      TradeContext context;
          public ProductsView()
     {
         
         this.InitializeComponent();
-        Basket.ClearBasket();
+       
         context = new TradeContext();
         Products = context.Products.Include(x => x.Manufacturer).
         Include(x => x.Category).
@@ -31,6 +32,13 @@ public partial class ProductsView : UserControl
         var TextBlockCt = this.FindControl<TextBlock>("TextBlockCount");
         _itemcount = Products.Count;
         TextBlockCt.Text = $" Результат запроса: {Products.Count} записей из {_itemcount}";
+
+        var TextBlockBasketInfo = this.FindControl<TextBlock>("TextBlockBasketInfo");
+         bool b = App.MainBasket.GetCount > 0;
+            var BtnBasket = this.FindControl<Button>("BtnBasket");
+                BtnBasket.IsVisible = b;
+                TextBlockBasketInfo.IsVisible = b;
+                TextBlockBasketInfo.Text = $"В корзине {App.MainBasket.GetCount} товаров";
     }
 
      private void InitializeComponent()
@@ -99,15 +107,15 @@ private void UpdateData()
         {
             
         // добавляем товар в корзину
-            Basket.AddProductInBasket(product);
+            App.MainBasket.AddProductInBasket(product);
             // отображаем кнопку и текстовое поле
-            if (Basket.GetCount > 0)
+            if (App.MainBasket.GetCount > 0)
             {
                 var BtnBasket = this.FindControl<Button>("BtnBasket");
                 BtnBasket.IsVisible = true;
                var TextBlockBasketInfo = this.FindControl<TextBlock>("TextBlockBasketInfo");
                TextBlockBasketInfo.IsVisible = true;
-                TextBlockBasketInfo.Text = $"В корзине {Basket.GetCount} товаров";
+                TextBlockBasketInfo.Text = $"В корзине {App.MainBasket.GetCount} товаров";
             }
         }
     }
@@ -125,20 +133,15 @@ private void UpdateData()
         ProductsListBox.ItemsSource = null;
         ProductsListBox.ItemsSource = Products;
         var TextBlockBasketInfo = this.FindControl<TextBlock>("TextBlockBasketInfo");
-        TextBlockBasketInfo.Text = $"В корзине {Basket.GetCount} товаров";
-        if (Basket.GetCount == 0)
+        TextBlockBasketInfo.Text = $"В корзине {App.MainBasket.GetCount} товаров";
+        if (App.MainBasket.GetCount == 0)
         {
             var BtnBasket = this.FindControl<Button>("BtnBasket");
                 BtnBasket.IsVisible = false;
                 TextBlockBasketInfo.IsVisible = false;
         }
 
-        /* if (App.MainWindow.IsFocused)
-        {
-            var TextBlockBasketInfo = this.FindControl<TextBlock>("TextBlockBasketInfo");
-               TextBlockBasketInfo.IsVisible = true;
-                TextBlockBasketInfo.Text = $"В корзине {Basket.GetCount} товаров";
-        } */
+     
     }
 
 }

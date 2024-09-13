@@ -25,7 +25,7 @@ public partial class Order
 
     public virtual PickupPoint Pickuppoint { get; set; } = null!;
 
-    public virtual Status Status { get; set; } = new Status();
+    public virtual Status Status { get; set; } = null!;
 
     public virtual User? UsernameNavigation { get; set; }
 }

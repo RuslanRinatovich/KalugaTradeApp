@@ -20,6 +20,7 @@
   <RowDefinition Height="34"/>
   <RowDefinition/>
   <RowDefinition Height="40"/>
+    <RowDefinition Height="40"/>
   <RowDefinition Height="40"/>
 </Grid.RowDefinitions>
 <Grid Background="{StaticResource additional}" Grid.ColumnSpan="2" />
@@ -85,8 +86,9 @@ HorizontalAlignment="Left" FontWeight="Bold" />
         </ListBox.ItemTemplate>
         
 		</ListBox>
-    <TextBlock x:Name="TextBlockTotalCost" Grid.Row="7" Grid.ColumnSpan="2"/>
-    <StackPanel Orientation="Horizontal" Grid.Row="8"  Grid.ColumnSpan="2" HorizontalAlignment="Center"> 
+    <TextBlock x:Name="TextBlockTotalCost" FontSize="16" FontWeight="Bold" Grid.Row="7" Grid.ColumnSpan="2"/>
+       <TextBlock x:Name="TextBlockTotalDiscount"  FontSize="16" FontWeight="Bold" Grid.Row="8" Grid.ColumnSpan="2"/>
+    <StackPanel Orientation="Horizontal" Grid.Row="9"  Grid.ColumnSpan="2" HorizontalAlignment="Center"> 
       <Button Width="100" Height="30" Content="Закрыть" x:Name="BtnOk" Click="BtnOkClick"/>
       <Button x:Name="BtnDelete" Content="Удалить" Click="BtnDeleteClick" Width="100" /> 
       <Button x:Name="BtnBuyItem" Content="Оформить" Width="100" Click="BtnBuyItem_Click"/>

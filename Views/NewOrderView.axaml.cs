@@ -21,18 +21,16 @@ namespace Views;
 public partial class NewOrderView : UserControl
 {
 
-    public static Dictionary<Product, BuyItem> CurrentBasket { get; set;} 
-   
-    
-    
+       
     TradeContext context;
 
     public Order NewOrder {get; set;}
     public List<PickupPoint> PickupPoints  {get; set;}
-
+    public Dictionary<Product, BuyItem> CurrentBasket {get; set;}
     public NewOrderView()
     {
         InitializeComponent();
+        CurrentBasket = App.MainBasket.GetBasket;
         LoadDataAndInit();
         DataContext = this;
 
@@ -53,27 +51,29 @@ public partial class NewOrderView : UserControl
         var TextBlockOrderCreateDate = this.FindControl<TextBlock>("TextBlockOrderCreateDate");
         var TextBlockOrderDeliveryDate = this.FindControl<TextBlock>("TextBlockOrderDeliveryDate");
         var TextBlockOrderGetCode = this.FindControl<TextBlock>("TextBlockOrderGetCode");
-
+        var TextBlockTotalDiscount = this.FindControl<TextBlock>("TextBlockTotalDiscount");
 
         // источник данных корзина
         context = new TradeContext();
         PickupPoints = context.PickupPoints.OrderBy(c => c.Address).ToList();
-        CurrentBasket = Basket.GetBasket;
+       // CurrentBasket = Basket.GetBasket;
         NewOrder = CreateNewOrder();
        
         if (App.CurrentUser != null)
         {
-        TextBlockOrderNumber.Text = $"Заказ No{NewOrder.Id} на имя " +
+        TextBlockOrderNumber.Text = $"Заказ №{NewOrder.Id} на имя " +
         $"{ App.CurrentUser.SecondName} {App.CurrentUser.FirstName} ";
         }
         else
         {
-        TextBlockOrderNumber.Text = $"Заказ No{NewOrder.Id}";
+        TextBlockOrderNumber.Text = $"Заказ №{NewOrder.Id}";
         }
-        TextBlockTotalCost.Text = $"Итого {Basket.GetTotalCost:C}";
+        TextBlockTotalCost.Text = $"Итого {App.MainBasket.GetTotalCost:C}";
+        TextBlockTotalDiscount.Text = $"Общий размер скидки {App.MainBasket.GetTotalDiscount} %";
         TextBlockOrderCreateDate.Text = NewOrder.CreateDate.ToLongDateString();
         TextBlockOrderDeliveryDate.Text = NewOrder.DeliveryDate.ToLongDateString();
         TextBlockOrderGetCode.Text = NewOrder.GetCode.ToString();
+
         }
 
     public Order CreateNewOrder()
@@ -83,10 +83,12 @@ public partial class NewOrderView : UserControl
         order.Id = context.Orders.Max(p => p.Id) + 1;
         order.CreateDate = DateOnly.FromDateTime(DateTime.Now);
         order.StatusId = 1;
-    if (Basket.IsOnStock)
-        order.DeliveryDate = DateOnly.FromDateTime(DateTime.Now.AddDays(3));
-    else
-        order.DeliveryDate = DateOnly.FromDateTime(DateTime.Now.AddDays(6));
+        if (App.MainBasket.IsOnStock)
+            order.DeliveryDate = DateOnly.FromDateTime(DateTime.Now.AddDays(3));
+        else
+            order.DeliveryDate = DateOnly.FromDateTime(DateTime.Now.AddDays(6));
+        if (App.CurrentUser != null)
+            order.Username = App.CurrentUser.Username;
         Random rnd = new Random();
         order.GetCode = rnd.Next(100, 1000);
         return order;
@@ -108,17 +110,17 @@ public partial class NewOrderView : UserControl
                 if (x.Key is Product product)
                 {
                     var TextBlockTotalCost = this.FindControl<TextBlock>("TextBlockTotalCost");
-                    Basket.DeleteProductFromBasket(product);
-                    CurrentBasket = Basket.GetBasket;
+                    App.MainBasket.DeleteProductFromBasket(product);
+                   
                     ProductsListBox.ItemsSource = null;
-                    ProductsListBox.ItemsSource = CurrentBasket;
-                    TextBlockTotalCost.Text = $"Итого {Basket.GetTotalCost:C}";
+                    ProductsListBox.ItemsSource = App.MainBasket.GetBasket;
+                    TextBlockTotalCost.Text = $"Итого {App.MainBasket.GetTotalCost:C}";
                 }
         }
 
         private async void BtnBuyItem_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-               if (Basket.GetCount == 0)
+               if (App.MainBasket.GetCount == 0)
                {
                     MessageWindow messageWindow = new MessageWindow("Ошибка", "В корзине нет товаров");
                     await messageWindow.ShowDialog(App.MainWindow);
@@ -136,7 +138,7 @@ public partial class NewOrderView : UserControl
                 NewOrder.PickuppointId = (ComboPickupPoint.SelectedItem as PickupPoint).Id;
                 context.Orders.Add(NewOrder);
                 context.SaveChanges();
-                foreach (var item in Basket.GetBasket)
+                foreach (var item in App.MainBasket.GetBasket)
                 {
                     OrderProduct orderProduct = new OrderProduct();
                     orderProduct.OrderId = NewOrder.Id;
@@ -155,10 +157,9 @@ public partial class NewOrderView : UserControl
                     await Print(NewOrder);
                     MessageWindow messageWindow1 = new MessageWindow("Информация", "Заказ сохранен");
                     await messageWindow1.ShowDialog(App.MainWindow);
-
-                    Basket.ClearBasket();
+                    App.MainBasket.ClearBasket();
                      var topLevel = TopLevel.GetTopLevel(this) as Window;
-            topLevel.Close();
+                    topLevel.Close();
 
         }
 
@@ -209,7 +210,6 @@ public partial class NewOrderView : UserControl
              table.Rows[0].Cells[6].Paragraphs[0].Append("Итого").Bold();
             // Add data to the table
             int row = 1;
-            double total = 0;
            foreach(OrderProduct item in order.OrderProducts)
            {
                  table.Rows[row].Cells[0].Paragraphs[0].Append($"{row}").Bold();
@@ -219,11 +219,11 @@ public partial class NewOrderView : UserControl
                  table.Rows[row].Cells[4].Paragraphs[0].Append($"{item.Product.DiscountAmount}%").Bold();
                  table.Rows[row].Cells[5].Paragraphs[0].Append($"{item.Product.GetPriceWithDiscount} руб.").Bold();
                  table.Rows[row].Cells[6].Paragraphs[0].Append($"{item.GetPrice} руб.").Bold();
-                 total+= item.GetPrice;
                 row++;
            }
            doc.InsertTable(table);
-           doc.InsertParagraph($"Итого: {total} руб."); // 
+           doc.InsertParagraph($"Общая стоимость товара: {order.GetTotalCost} руб."); // 
+            doc.InsertParagraph($"Общий размер скидки: {order.GetTotalDiscount} %"); // 
             doc.Save(); // save changes to file
         }
         }

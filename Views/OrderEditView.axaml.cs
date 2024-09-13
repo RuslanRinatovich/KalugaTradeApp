@@ -23,22 +23,21 @@ public partial class OrderEditView : UserControl
 {
 
     public Order Order {get;set;}
-    public static Dictionary<Product, BuyItem> CurrentBasket { get; set;} 
+     
      public List<PickupPoint> PickupPoints  {get; set;}
       public List<Status> Statuses  {get; set;}
-   
-    
+       public Dictionary<Product, BuyItem> CurrentBasket {get; set;}
     
     TradeContext context;
 
+    Basket basket = new Basket();
        
 
     public OrderEditView(Order order)
     {
         InitializeComponent();
         Order = order;
-        Basket.ClearBasket();
-        CurrentBasket = Basket.GetBasket;
+        CurrentBasket = basket.GetBasket;
         LoadDataAndInit();
         DataContext = this;
 
@@ -72,18 +71,18 @@ public partial class OrderEditView : UserControl
         Order.Status = Statuses.FirstOrDefault(x => x.Id == Order.StatusId);
         foreach (OrderProduct item in Order.OrderProducts)
         {
-            Basket.AddProductInBasket(item.Product);
-            Basket.SetCount(item.Product, (int) item.Count);
+            basket.AddProductInBasket(item.Product);
+            basket.SetCount(item.Product, (int) item.Count);
         }
        
         if (Order.UsernameNavigation != null)
         {
-        TextBlockOrderNumber.Text = $"Заказ No{Order.Id} на имя " +
+        TextBlockOrderNumber.Text = $"Заказ №{Order.Id} на имя " +
         $"{ Order.UsernameNavigation.SecondName} {Order.UsernameNavigation.FirstName} ";
         }
         else
         {
-        TextBlockOrderNumber.Text = $"Заказ No{Order.Id}";
+        TextBlockOrderNumber.Text = $"Заказ №{Order.Id}";
         }
             TextBlockTotalCost.Text = $"Общая сумма заказа {Order.GetTotalCost:C}";
             TextBlockTotalDiscount.Text = $"Общий размер скидки {Order.GetTotalDiscount} %";
@@ -175,7 +174,6 @@ public partial class OrderEditView : UserControl
              table.Rows[0].Cells[6].Paragraphs[0].Append("Итого").Bold();
             // Add data to the table
             int row = 1;
-            double total = 0;
            foreach(OrderProduct item in order.OrderProducts)
            {
                  table.Rows[row].Cells[0].Paragraphs[0].Append($"{row}").Bold();
@@ -185,11 +183,11 @@ public partial class OrderEditView : UserControl
                  table.Rows[row].Cells[4].Paragraphs[0].Append($"{item.Product.DiscountAmount}%").Bold();
                  table.Rows[row].Cells[5].Paragraphs[0].Append($"{item.Product.GetPriceWithDiscount} руб.").Bold();
                  table.Rows[row].Cells[6].Paragraphs[0].Append($"{item.GetPrice} руб.").Bold();
-                 total+= item.GetPrice;
                 row++;
            }
-           doc.InsertTable(table);
-           doc.InsertParagraph($"Итого: {total} руб."); // 
+            doc.InsertTable(table);
+           doc.InsertParagraph($"Общая стоимость товара: {order.GetTotalCost} руб."); // 
+            doc.InsertParagraph($"Общий размер скидки: {order.GetTotalDiscount} %"); // 
             doc.Save(); // save changes to file
         }
         }
