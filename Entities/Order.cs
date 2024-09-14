@@ -15,8 +15,6 @@ public partial class Order
 
     public DateOnly DeliveryDate { get; set; }
 
- 
-
     public string? Username { get; set; }
 
     public int GetCode { get; set; }

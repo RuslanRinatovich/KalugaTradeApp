@@ -63,8 +63,9 @@ public partial class Order
         {
             get
             {
-                
-                 return "#20b2aa";
+                if (IsOnStock)
+                    return "#20b2aa";
+                return "#ff8c00";
             }
         }
 
@@ -72,6 +73,20 @@ public partial class Order
         get
         {
             return new(DeliveryDate.Year, DeliveryDate.Month, DeliveryDate.Day, 0, 0, 0, TimeSpan.FromHours(10));
+        }
+    }
+
+     public bool IsOnStock
+    {
+        get
+        {
+            foreach (var item in OrderProducts)
+            {
+                if (item.Product.QuantityInStock < 3)
+                {
+                        return false;
+            }
+            }    return true;
         }
     }
 

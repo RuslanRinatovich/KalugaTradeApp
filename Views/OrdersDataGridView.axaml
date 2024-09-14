@@ -46,22 +46,63 @@
           BorderBrush="Gray" RowHeight="40"
           Background="{StaticResource main}"
           ItemsSource="{Binding Orders}">
-          <DataGrid.Styles>
-            <Style Selector="DataGridRow">
-              <Setter Property="Background" Value="#20b2aa"/>
-            </Style>
-            </DataGrid.Styles>
-          <DataGrid.Columns >
-    <DataGridTextColumn Binding="{Binding Id}" Header="№" Width="40"/>
-    <DataGridTextColumn Binding="{Binding Status.Title}" Header="Статус" Width="*"/>
-    <DataGridTextColumn Binding="{Binding GetUserFIO}" Header="Клиент" Width="3*"/>
-    <DataGridTextColumn Binding="{Binding CreateDate}" Header="Дата создания" Width="*"/>
-    <DataGridTextColumn Binding="{Binding DeliveryDate}" Header="Дата доставки" Width="*"/>
-    <DataGridTextColumn Binding="{Binding GetTotalCost, StringFormat='C'}" Header="Общая сумма заказа" Width="*"/>
-    <DataGridTextColumn Binding="{Binding GetTotalDiscount, StringFormat=' {0} %'}" Header="Общий размер скидки" Width="*"/>
-    <DataGridTextColumn Binding="{Binding Pickuppoint.Address}" Header="Пункт выдачи" Width="*"/>
-    <DataGridTextColumn Binding="{Binding GetCode}" Header="Код выдачи" Width="*"/>
-    <DataGridTemplateColumn Width="auto" Header="Редактировать">
+          <DataGrid.Columns>
+            <DataGridTemplateColumn Width="*">
+               <DataGridTemplateColumn.HeaderTemplate>
+                <DataTemplate>
+                  <Grid ShowGridLines="true">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="40"/>
+                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="100"/>
+                  </Grid.ColumnDefinitions>
+                  <TextBlock Text="№" Grid.Column="0" HorizontalAlignment="Center"/>
+                  <TextBlock Text="Статус" Grid.Column="1" HorizontalAlignment="Center"/>
+                  <TextBlock Text="Клиент" Grid.Column="2" HorizontalAlignment="Center"/>
+                  <TextBlock Text="Дата создания" Grid.Column="3" HorizontalAlignment="Center"/>
+                  <TextBlock Text="Дата доставки" Grid.Column="4" HorizontalAlignment="Center"/>
+                  <TextBlock Text="Общая сумма заказа" Grid.Column="5" HorizontalAlignment="Center"/>
+                  <TextBlock Text="Общий размер скидки" Grid.Column="6" HorizontalAlignment="Center"/>
+                  <TextBlock Text="Пункт выдачи" Grid.Column="7" HorizontalAlignment="Center"/>
+                  <TextBlock Text="Код выдачи" Grid.Column="8" HorizontalAlignment="Center"/> 
+              </Grid>
+                </DataTemplate>
+            </DataGridTemplateColumn.HeaderTemplate>
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <Grid Background="{Binding GetColor}" ShowGridLines="true" >
+                  <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="40"/>
+                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="100"/>
+                  </Grid.ColumnDefinitions>
+                  <TextBlock Text="{Binding Id}" Grid.Column="0"/>
+                  <TextBlock Text="{Binding Status.Title}" Grid.Column="1" />
+                  <TextBlock Text="{Binding GetUserFIO}" Grid.Column="2" />
+                  <TextBlock Text="{Binding CreateDate}" Grid.Column="3" />
+                  <TextBlock Text="{Binding DeliveryDate}" Grid.Column="4" />
+                  <TextBlock Text="{Binding GetTotalCost, StringFormat='C'}" Grid.Column="5" />
+                  <TextBlock Text="{Binding GetTotalDiscount, StringFormat=' {0} %'}" Grid.Column="6" />
+                  <TextBlock Text="{Binding Pickuppoint.Address}" Grid.Column="7" />
+                  <TextBlock Text="{Binding GetCode}" Grid.Column="8" /> 
+              </Grid>
+              
+            </DataTemplate>
+        </DataGridTemplateColumn.CellTemplate>
+</DataGridTemplateColumn>
+            <DataGridTemplateColumn Width="auto" Header="Редактировать">
         <DataGridTemplateColumn.CellTemplate>
             <DataTemplate>
                 <Button  Click="EditButton_Click" HorizontalAlignment="Center" Content="..."  Margin="0"/>

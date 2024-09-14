@@ -15,39 +15,39 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TradeApp
-build_property.ProjectDir = c:\KALUGA\Home\KalugaTradeApp\
+build_property.ProjectDir = c:\Users\Student\Desktop\ДЕМО14092024_ Сафиулин\KalugaTradeApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[c:/KALUGA/Home/KalugaTradeApp/App.axaml]
+[c:/Users/Student/Desktop/ДЕМО14092024_ Сафиулин/KalugaTradeApp/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/KalugaTradeApp/LoginWindow.axaml]
+[c:/Users/Student/Desktop/ДЕМО14092024_ Сафиулин/KalugaTradeApp/LoginWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/KalugaTradeApp/MainWindow.axaml]
+[c:/Users/Student/Desktop/ДЕМО14092024_ Сафиулин/KalugaTradeApp/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/KalugaTradeApp/MessageWindow.axaml]
+[c:/Users/Student/Desktop/ДЕМО14092024_ Сафиулин/KalugaTradeApp/MessageWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/KalugaTradeApp/OrderWindow.axaml]
+[c:/Users/Student/Desktop/ДЕМО14092024_ Сафиулин/KalugaTradeApp/OrderWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/KalugaTradeApp/Views/NewOrderView.axaml]
+[c:/Users/Student/Desktop/ДЕМО14092024_ Сафиулин/KalugaTradeApp/Views/NewOrderView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/KalugaTradeApp/Views/OrderEditView.axaml]
+[c:/Users/Student/Desktop/ДЕМО14092024_ Сафиулин/KalugaTradeApp/Views/OrderEditView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/KalugaTradeApp/Views/OrdersDataGridView.axaml]
+[c:/Users/Student/Desktop/ДЕМО14092024_ Сафиулин/KalugaTradeApp/Views/OrdersDataGridView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/KalugaTradeApp/Views/ProductsDataGridView.axaml]
+[c:/Users/Student/Desktop/ДЕМО14092024_ Сафиулин/KalugaTradeApp/Views/ProductsDataGridView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/KalugaTradeApp/Views/ProductsEditView.axaml]
+[c:/Users/Student/Desktop/ДЕМО14092024_ Сафиулин/KalugaTradeApp/Views/ProductsEditView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[c:/KALUGA/Home/KalugaTradeApp/Views/ProductsView.axaml]
+[c:/Users/Student/Desktop/ДЕМО14092024_ Сафиулин/KalugaTradeApp/Views/ProductsView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

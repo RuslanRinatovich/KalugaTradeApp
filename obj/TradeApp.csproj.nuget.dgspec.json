@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "c:\\KALUGA\\Home\\KalugaTradeApp\\TradeApp.csproj": {}
+    "c:\\Users\\Student\\Desktop\\ДЕМО14092024_ Сафиулин\\KalugaTradeApp\\TradeApp.csproj": {}
   },
   "projects": {
-    "c:\\KALUGA\\Home\\KalugaTradeApp\\TradeApp.csproj": {
+    "c:\\Users\\Student\\Desktop\\ДЕМО14092024_ Сафиулин\\KalugaTradeApp\\TradeApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\KALUGA\\Home\\KalugaTradeApp\\TradeApp.csproj",
+        "projectUniqueName": "c:\\Users\\Student\\Desktop\\ДЕМО14092024_ Сафиулин\\KalugaTradeApp\\TradeApp.csproj",
         "projectName": "TradeApp",
-        "projectPath": "c:\\KALUGA\\Home\\KalugaTradeApp\\TradeApp.csproj",
-        "packagesPath": "C:\\Users\\Main\\.nuget\\packages\\",
-        "outputPath": "c:\\KALUGA\\Home\\KalugaTradeApp\\obj\\",
+        "projectPath": "c:\\Users\\Student\\Desktop\\ДЕМО14092024_ Сафиулин\\KalugaTradeApp\\TradeApp.csproj",
+        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Student\\Desktop\\ДЕМО14092024_ Сафиулин\\KalugaTradeApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Main\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
