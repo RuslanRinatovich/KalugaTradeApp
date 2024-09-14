@@ -337,8 +337,8 @@ INSERT INTO public."user" (first_name,second_name,middle_name,username,"password
 	 ('Кира','Шилова ','Егоровна','loginDEyiw2018','cnj3QR',3);
 INSERT INTO public."user" (first_name,second_name,middle_name,username,"password",role_id) VALUES
 	 ('Майя','Высоцкая','Давидовна','maia','1',1),
-	 ('Дамир','Агеев','Давидович','damir','2',1),
-	 ('Филипп','Терентьев','Богданович','filip','3',1),
+	 ('Дамир','Агеев','Давидович','damir','2',2),
+	 ('Филипп','Терентьев','Богданович','filip','3',3),
 	 ('Лея','Голубева','Петровна','leya','4',1);
 	 
 INSERT INTO public."order" (status_id,pickuppoint_id,create_date,delivery_date,username,get_code) VALUES
