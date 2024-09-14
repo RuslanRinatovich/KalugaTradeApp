@@ -52,25 +52,25 @@
                 <DataTemplate>
                   <Grid ShowGridLines="true">
                     <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="40"/>
-                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="60"/>
+                      <ColumnDefinition Width="120"/>
                       <ColumnDefinition Width="*"/>
-                      <ColumnDefinition Width="100"/>
-                      <ColumnDefinition Width="100"/>
-                      <ColumnDefinition Width="100"/>
-                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="120"/>
+                      <ColumnDefinition Width="120"/>
+                      <ColumnDefinition Width="150"/>
+                      <ColumnDefinition Width="150"/>
                       <ColumnDefinition Width="*"/>
-                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="120"/>
                   </Grid.ColumnDefinitions>
-                  <TextBlock Text="№" Grid.Column="0" HorizontalAlignment="Center"/>
-                  <TextBlock Text="Статус" Grid.Column="1" HorizontalAlignment="Center"/>
-                  <TextBlock Text="Клиент" Grid.Column="2" HorizontalAlignment="Center"/>
-                  <TextBlock Text="Дата создания" Grid.Column="3" HorizontalAlignment="Center"/>
-                  <TextBlock Text="Дата доставки" Grid.Column="4" HorizontalAlignment="Center"/>
-                  <TextBlock Text="Общая сумма заказа" Grid.Column="5" HorizontalAlignment="Center"/>
-                  <TextBlock Text="Общий размер скидки" Grid.Column="6" HorizontalAlignment="Center"/>
-                  <TextBlock Text="Пункт выдачи" Grid.Column="7" HorizontalAlignment="Center"/>
-                  <TextBlock Text="Код выдачи" Grid.Column="8" HorizontalAlignment="Center"/> 
+                  <TextBlock Text="№" Grid.Column="0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                  <TextBlock Text="Статус" Grid.Column="1" HorizontalAlignment="Center" FontWeight="Bold"/>
+                  <TextBlock Text="Клиент" Grid.Column="2" HorizontalAlignment="Center" FontWeight="Bold"/>
+                  <TextBlock Text="Дата создания" Grid.Column="3" HorizontalAlignment="Center" FontWeight="Bold"/>
+                  <TextBlock Text="Дата доставки" Grid.Column="4" HorizontalAlignment="Center" FontWeight="Bold"/>
+                  <TextBlock Text="Общая сумма заказа" Grid.Column="5" HorizontalAlignment="Center" FontWeight="Bold"/>
+                  <TextBlock Text="Общий размер скидки" Grid.Column="6" HorizontalAlignment="Center" FontWeight="Bold"/>
+                  <TextBlock Text="Пункт выдачи" Grid.Column="7" HorizontalAlignment="Center" FontWeight="Bold"/>
+                  <TextBlock Text="Код выдачи" Grid.Column="8" HorizontalAlignment="Center" FontWeight="Bold"/> 
               </Grid>
                 </DataTemplate>
             </DataGridTemplateColumn.HeaderTemplate>
@@ -78,25 +78,25 @@
               <DataTemplate>
                 <Grid Background="{Binding GetColor}" ShowGridLines="true" >
                   <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="40"/>
-                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="72"/>
+                      <ColumnDefinition Width="120"/>
                       <ColumnDefinition Width="*"/>
-                      <ColumnDefinition Width="100"/>
-                      <ColumnDefinition Width="100"/>
-                      <ColumnDefinition Width="100"/>
-                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="120"/>
+                      <ColumnDefinition Width="120"/>
+                      <ColumnDefinition Width="150"/>
+                      <ColumnDefinition Width="150"/>
                       <ColumnDefinition Width="*"/>
-                      <ColumnDefinition Width="100"/>
+                      <ColumnDefinition Width="152"/>
                   </Grid.ColumnDefinitions>
-                  <TextBlock Text="{Binding Id}" Grid.Column="0"/>
-                  <TextBlock Text="{Binding Status.Title}" Grid.Column="1" />
-                  <TextBlock Text="{Binding GetUserFIO}" Grid.Column="2" />
-                  <TextBlock Text="{Binding CreateDate}" Grid.Column="3" />
-                  <TextBlock Text="{Binding DeliveryDate}" Grid.Column="4" />
-                  <TextBlock Text="{Binding GetTotalCost, StringFormat='C'}" Grid.Column="5" />
-                  <TextBlock Text="{Binding GetTotalDiscount, StringFormat=' {0} %'}" Grid.Column="6" />
-                  <TextBlock Text="{Binding Pickuppoint.Address}" Grid.Column="7" />
-                  <TextBlock Text="{Binding GetCode}" Grid.Column="8" /> 
+                  <TextBlock Text="{Binding Id}" Grid.Column="0"  HorizontalAlignment="Center"/>
+                  <TextBlock Text="{Binding Status.Title}" Grid.Column="1"  HorizontalAlignment="Center" />
+                  <TextBlock Text="{Binding GetUserFIO}" Grid.Column="2"   HorizontalAlignment="Center"/>
+                  <TextBlock Text="{Binding CreateDate}" Grid.Column="3"   HorizontalAlignment="Center"/>
+                  <TextBlock Text="{Binding DeliveryDate}" Grid.Column="4"  HorizontalAlignment="Center" />
+                  <TextBlock Text="{Binding GetTotalCost, StringFormat='C'}" Grid.Column="5"  HorizontalAlignment="Center"/>
+                  <TextBlock Text="{Binding GetTotalDiscount, StringFormat=' {0} %'}" Grid.Column="6"  HorizontalAlignment="Center"/>
+                  <TextBlock Text="{Binding Pickuppoint.Address}" Grid.Column="7" HorizontalAlignment="Center" />
+                  <TextBlock Text="{Binding GetCode}" Grid.Column="8" HorizontalAlignment="Center" /> 
               </Grid>
               
             </DataTemplate>
